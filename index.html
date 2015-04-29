@@ -1,0 +1,2020 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+<link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-320x460.png" />
+<title>AtoZ Restaurent</title>
+<link type="text/css" rel="stylesheet" href="css/style.css"/>
+<link type="text/css" rel="stylesheet" href="colors/restaurant/restaurant.css"/>
+<!--<link type="text/css" rel="stylesheet" href="colors/restaurant/green.css"/>-->
+
+<link type="text/css" rel="stylesheet" href="css/idangerous.swiper.css"/>
+<link type="text/css" rel="stylesheet" href="css/swipebox.css"/>
+<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'/>
+<link href="css/jquery.mobile.structure-1.4.5.css" rel="stylesheet" type="text/css"  />
+
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.iscrollview.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.iscrollview-pull.css">	  
+
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+	<script> 
+	document.onreadystatechange = function(e)
+	{
+		if (document.readyState === 'complete')
+		{
+			document.addEventListener("deviceready", onDeviceReady, false);			
+			}
+	};
+   </script>
+<style>
+/* Swipe works with mouse as well but often causes text selection. */
+/* We'll deny text selecton on everything but INPUTs and TEXTAREAs. */
+#menulist :not(INPUT):not(TEXTAREA) {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+/* Content styling. */
+dl { font-family: "Times New Roman", Times, serif; padding: 1em; }
+dt { font-size: 2em; font-weight: bold; }
+dt span { font-size: .5em; color: #777; margin-left: .5em; }
+dd { font-size: 1.25em; margin: 1em 0 0; padding-bottom: 1em; border-bottom: 1px solid #eee; }
+.back-btn { float: right; margin: 0 2em 1em 0; }
+
+
+.ui-panel-inner{
+padding-top:5px !important;
+padding-right:5px !important;	
+	}
+	.ui-content .ui-listview-inset, .ui-panel-inner > .ui-listview-inset{
+			margin:0px ;	
+		}
+	
+	.menu_content{
+		
+		padding:0em !important;
+		}	
+		
+		.example-wrapper, .example-wrapper div.iscroll-scroller {
+		width: 100% !important;
+		}
+
+		.CustomFontsize{
+				
+			font-size:12px !important;
+			
+			}
+		ul.filterlist li{
+			line-height:8px;	
+			}
+		.filterTitle{
+		background-color:#FFF !important;width:100%; font-size:16px !important; line-height:24px !important; width:90% !important	
+			}	
+		.customLineheight{
+		line-height:22px !important;	
+			}	
+			
+			
+		.strikethrough {
+  position: relative;
+}
+.strikethrough:before {
+  position: absolute;
+  content: "";
+  left: -4px;
+  top: 50%;
+  right: -4px;
+  border-top: 1px solid;
+  border-color: #F00 !important;
+
+  -webkit-transform:rotate(1deg);
+  -moz-transform:rotate(1deg);
+  -ms-transform:rotate(1deg);
+  -o-transform:rotate(1deg);
+  transform:rotate(1deg);
+}	
+
+ .amountfont{
+	 font-size:18px !important ;
+	 }
+	 
+.unselectedproduct{
+	opacity:0.3;
+	}
+.selectedproduct{
+	opacity:1;
+	}	
+	.privacyBold{
+		font-size:14px; padding:10px; padding-bottom:5px;;
+		}
+	 .privacyLight{
+		padding:10px !important; font-family:'Times New Roman', Times, serif !important; 
+		 }
+		 
+	.orderFont *{
+			font-family:'Times New Roman', Times, serif !important;	
+		}	 
+			
+</style>
+ <style type="text/css">
+ /*
+.circle-processed:before {
+    content: ' \25CF';
+    font-size: 100px;
+}
+.circle-processing:before {
+    content: ' \25CB';
+    font-size: 50px;
+}
+*/
+.circle-processed{
+		background-color:#0F0;
+		border-radius:50%;
+		padding:3px;
+		
+			}
+.circle-processing{
+	background-color:#CCC;
+	border-radius:50%;
+	padding:3px;
+	}
+
+
+						</style>
+</head>
+<body>
+
+<div data-role="page" id="home"  data-title="Atoz Restaurent" class="sliderbg_menu" >
+    <!--content--->
+    <div data-role="content">
+        <div class="logo"><a href="#"  style="color:#BF6000">AtoZ<span> Have your meal in few clicks </span></a></div>
+        <div class="menu">
+        <ul class="fontCustom">
+                <li><a href="#" onclick="checkuserstatus()"><img src="colors/restaurant/images/Place order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Place Order</span></a></li>
+                <li><a href="#" onclick="loadliveorder()" ><img src="colors/restaurant/images/Track order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Track Order</span></a></li>
+                <li><a href="#orderhistroy" data-transition="slide" ><img src="colors/restaurant/images/orderhistory.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Order History</span></a></li>
+                <li><a href="#settings" data-transition="slide" ><img src="colors/restaurant/images/setting.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Settings</span></a></li>
+        </ul>
+        
+        <div class="clearfix"></div>
+        </div>
+    </div>
+</div>    
+
+<div data-role="page" id="registration"  data-title="Atoz Restaurent" >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#" onclick="swiperParent.swipeTo(9);">
+                        	<img src="images/icons/contact.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                    	<center><h2 style="clear:none !important"> Registration</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+
+    	<!--content--->
+  	<div data-role="content">
+        <div class="example-wrapper" data-iscroll>            
+                <div class="form">
+                    <form class="cmxform fontCustom" id="CommentForm" method="post" action="#">
+                            <label>Name:</label>
+                            <input type="text" name="username" id="username" value="" class="form_input required fontCustom" />
+                            <label>Mobile Number:</label>
+                            <input type="tel" name="userphone" id="userphone" value="" class="form_input required fontCustom" />
+                            <label>Company Name:</label>
+                            <select type="text" name="companycode" id="companycode" onchange="loadbranch()" class="form_input fontCustom" style="width:100%;" >
+                            <option>Select company</option>
+                            </select>
+                            <label>Company Location:</label>
+                            <select type="text" name="branchid" id="branchid" class="form_input fontCustom" style="width:100%;" >
+                            <option>Select Location</option>
+                            </select>
+                            <div>&emsp;</div>
+                            <button type="button" onclick="validate_user()" name="submit" class="form_submit green green_borderbottom" >
+                            Submit
+                            </button>
+                            <center>                      
+                            <label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label></center>
+                    </form>
+                </div>
+			<div class="clearfix"></div>
+          </div>  
+    </div>
+    
+</div>
+
+
+
+<div data-role="page" id="placeorder"  data-title="Atoz Restaurent" >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#" onclick="swiperParent.swipeTo(9);">
+                        	<img src="images/icons/contact.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order Date</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+
+    <!--content--->
+    <div data-role="content">
+        <div class="example-wrapper" data-iscroll>            
+                    <div class="form">
+                        <form class="fontCustom" id="CommentForm" method="post" action="#">
+                            <label>Date:</label>
+                            <input type="date" name="menu_date" id="menu_date" onchange="loadmenutime()" value="" class="form_input required" />
+                            <label>Time:</label>
+                            
+                            <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%;" >
+                            <option>Select delivery time</option>
+                            </select>
+                            
+                            <button type="button" onclick="loadmenulist()" name="submit" class="form_submit green green_borderbottom" >
+                            	Next
+                            </button>
+                            
+                            <center>                      
+                            <label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label></center>
+                        </form>
+                    </div>
+          </div>  
+       </div>
+</div>    
+
+<div data-role="page" id="menulist" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Menu</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+    <div role="main" class="ui-content menu_content">
+        <div id="menuscroll" class="example-wrapper" data-iscroll>            
+            <ul data-role="listview" data-icon="false"  id="menulistitems" >
+<li class="showAll northindian "><a href=""><img src="images/biriyani.JPG" style="vertical-align:middle; width:100% !important; height:100% !important;" />
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="Qty" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+                
+            </ul>
+
+		</div>
+    </div><!-- /content -->
+    
+    <div data-role="footer">
+             <div id="header" style="display:block;" onclick="gotocart()">
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important"> View Cart</h2></center>
+                    </div>
+             </div>
+    </div>
+    
+    
+    
+    <div data-role="panel" id="right-panel" data-display="push" data-position="right" style="background-color:#CCC !important; padding-left:1px;" >
+    	<a href="#"><h4>Narrow Your Menu</h4></a>
+    <div class="toggle_container_blog" id="filtermenu" style="display:block !important" >
+    </div>
+                
+                
+        <button data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-right" style="background-color:#690 !important">
+        	Close
+        </button>
+    </div><!-- /panel -->
+</div>
+
+
+<div data-role="page" id="viewcart" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Cart</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+	    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+            <ul data-role="listview" data-icon="false"  id="viewcartitems" >
+                    <li>
+            <a ><img src="images/biriyani.JPG"  />
+            	<p>
+                <span style="float:left; width:70% !important;  line-height:25px !important;">
+                	biriyani &emsp;
+                 	<img src="images/veg.jpg"  style="max-width:30px; vertical-align:middle !important"  ><br />
+                    Cuisine : North Indian <br />
+                	 Rs &emsp;<span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont">200.00</span> 
+               </span>
+                
+                <span style="float:right; width:30% !important; line-height:25px;" >
+						<input type="text"  />
+                   <span class="amountfont" >Rs 1000 </span><br />
+            		<span data-role="button" style=" position:relative; right:40%; top:8px; float:right;background-color:#F00;padding:4px; border:1px solid #999; border-radius:50% ;color:#FFF"><img src="images/delete.png" style="max-width:18px; vertical-align:middle" />
+                    
+                    </span>
+                </span>
+               </p>
+            </a>
+		</li>
+            </ul>
+
+		</div>
+    </div><!-- /content -->
+    	<div data-role="footer">
+             <div id="header" style="display:block;" onclick="checkoutpayement()">
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important"><span id="totalbill"></span>&emsp;Checkout</h2></center>
+                    </div>
+             </div>
+    </div>
+</div>
+
+<div data-role="page" id="viewproduct" class="fontCustom"  data-title="Atoz Restaurent"  >
+
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Menu</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+
+    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll id="descriptionpage">            
+            
+		</div>
+    </div><!-- /content -->
+    
+   <!--- <div data-role="footer">
+             <div id="header" style="display:block; ">
+                    <div class="page_title" data-rel="back"  >
+                        <center><h2 style="clear:none !important">Back to Menu</h2></center>
+                    </div>
+             </div>
+    </div>--->
+    
+    
+    
+</div>
+        
+  
+<div data-role="page" id="settings" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Settings</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+	    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+            <ul data-role="listview" data-icon="false"  id="settingsmenu" >
+                   <li><a href="#" onclick="loaduserdetails()">My Account</a></li> 
+                   <li><a href="#privacy"  data-transition="slide">Privacy Policy</a></li>
+                   <li><a href="#terms"  data-transition="slide">Terms and Conditions</a></li>
+                   <li><a href="#"  data-transition="slide">Feedback</a></li>
+                   <li><a href="#"  data-transition="slide">Support</a></li>
+            </ul>
+
+		</div>
+    </div><!-- /content -->
+    	
+</div>
+
+
+<div data-role="page" id="myaccount" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Settings</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content">
+        <div class="example-wrapper" data-iscroll>            
+                <div class="form">
+                    <form class="cmxform fontCustom" id="CommentForm" method="post" action="#">
+                            <label>Name:</label>
+                            <input type="text" name="username" id="usernameEdit" value="" class="form_input required fontCustom" />
+                            <label>Mobile Number:</label>
+                            <input type="tel" name="userphone" id="userphoneEdit" value="" class="form_input required fontCustom" />
+                            <label>Company Name:</label>
+                            <select type="text" name="companycode" id="companycodeEdit" onchange="loadbranchEdit()" class="form_input fontCustom" style="width:100%;" >
+                            <option>Select company</option>
+                            </select>
+                            <label>Company Location:</label>
+                            <select type="text" name="branchid" id="branchidEdit" class="form_input fontCustom" style="width:100%;" >
+                            <option>Select Location</option>
+                            </select>
+                            <div>&emsp;</div>
+                            <button type="button" onclick="update_user()" name="submit" class="form_submit green green_borderbottom" >
+                            Update
+                            </button>
+                            <center>                      
+                            <label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label></center>
+                    </form>
+                </div>
+			<div class="clearfix"></div>
+          </div>  
+        
+    </div>
+
+    	
+</div>
+
+<div data-role="page" id="orderhistroy" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order Histroy</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"  class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+            <ul data-role="listview" class="orderFont">
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            </ul>    
+			
+          </div>  
+        
+    </div>
+
+    	
+</div>
+
+
+<div data-role="page" id="trackorder"  class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Track Order</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"   class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+            <ul data-role="listview" class="orderFont" id="trackorderlist" >
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div> 
+                </li>	
+            </ul>    
+			
+          </div>  
+        
+    </div>
+
+    	
+</div> 
+
+
+<div data-role="page" id="trackorderstatus" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order status</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"  class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll id="trackorderstatusview">            
+                    <br />
+                 <span onclick="vieworderdetails()">   
+                    <center>
+                    <div style="height:30px !important; width:70%"   >
+                    <center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Id : OD234522BX</span></center> 
+                    </div>
+                    <div style="height:30px !important; width:70%"   >
+                    <center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Date : 17-04-2015  ,  Payment success </span></center> 
+                    </div>
+                    </center>
+                 </span>   
+                    
+           <div>
+                    <center>
+                    <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
+                    <span style="position:relative; top:30% !important"><center> Bill Amount : Rs 1000.00  /-</center></span>
+                    </div>
+              		</center>
+                    </div>
+					
+	  	   <div style="position:absolute !important; top:150; left:0;right:0; width:100%; height:200px">  
+                    	
+                    <div style="position:relative !important; top:20px; right:52%; left:2%; text-align:right; width:43% ;height:24%">
+							Order Placed
+                    </div>    
+
+                    <div style="position:relative !important; top:17%; left:57%; right:2%; width:43%; height:24%">
+                		    Order is cooking now
+                    </div>    
+
+                    <div style="position:relative !important; top:28%; right:52%; left:2%; width:43%;  text-align:right; height:24%">
+              		      	Order created & Packed
+                    </div>    
+
+                    <div style="position:relative !important; top:34%; left:57%; right:2%; width:43%; height:24%">
+                    		Order Dispatched for delivery
+                    </div>    
+					
+               </div>
+               
+           <div style="border:2px solid #000; border-radius:10px; position:absolute; left:50%; height:200px; top:150px; width:0% !important">
+                        
+                            <div id="status1" class="circle-processed" style="position:relative;top:-15px;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
+                            <div id="status2" class="circle-processed" style="position:relative;top:11%;left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
+                            <div id="status3" class="circle-processing" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>
+                            <div id="status4" class="circle-processing" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
+                        </div>                        
+                        
+                        
+
+          </div>  
+        
+    </div>
+
+    	
+</div> 
+
+<div data-role="page" id="orderhistroyview" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order Summary</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"  class="ui-content menu_content">
+ <div class="example-wrapper" data-iscroll>                           
+<br />
+<center>
+<div style="height:30px !important; width:70%"   >
+<center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Id : OD234522BX</span></center> 
+</div>
+<div style="height:30px !important; width:70%"   >
+<center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Date : 17-04-2015 </span></center> 
+</div>
+</center>
+
+
+<div>
+<center>
+    <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
+        <span style="position:relative; top:30% !important"><center> Bill Amount : Rs 1000.00  /-</center></span>
+    </div>
+
+<br />
+
+    <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
+        <span style="position:relative; top:30% !important"><center>Reorder this menu</center></span>
+    </div>
+</center>
+</div>            
+<br />
+
+			<ul data-role="listview" data-icon="false"  id="menulistitems" >
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+
+            </ul>    
+
+
+          </div>  
+        
+    </div>
+
+    	
+</div>
+
+
+<div data-role="page" id="privacy" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Privacy Policy</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+	    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll >            
+        	<p class="privacyBold">Atozfoods Privacy Policy</p>
+            <p class="privacyLight">
+            This privacy policy has been compiled to better serve those who are concerned with how their 'Personally identifiable information' (PII) is being used online. PII, as used in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.
+            </p>
+<p class="privacyBold">
+What personal information do we collect from the people that visit our blog, website or app?
+</p>
+<p class="privacyLight">
+When ordering or registering on our site, as appropriate, you may be asked to enter your name or other details to help you with your experience.
+</p>
+<p class="privacyBold">
+When do we collect information?
+</p>
+<p class="privacyLight">
+We collect information from you when you place an order, respond to a survey or enter information on our site.
+</p>
+
+<p class="privacyBold">
+How do we use your information?
+</p>
+<p class="privacyLight">
+We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:
+	<ol style="list-style:disc">
+      <li> To allow us to better service you in responding to your customer service requests.</li>
+      <li> To quickly process your transactions.</li>
+      <li> To send periodic emails regarding your order or other products and services.</li>
+      </ol>
+  </p>    
+<p class="privacyBold">
+How do we protect visitor information?
+</p>
+<p class="privacyLight">
+We do not use vulnerability scanning and/or scanning to PCI standards.
+<br />
+We do not use Malware Scanning.
+</p>
+
+<p class="privacyBold">
+
+Do we use 'cookies'?
+</p>
+<p class="privacyBold">
+We do not use cookies for tracking purposes
+</p>
+<p class="privacyLight">
+You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser (like Internet Explorer) settings. Each browser is a little different, so look at your browser's Help menu to learn the correct way to modify your cookies.
+<br />
+If you disable cookies off, some features will be disabled that make your site experience more efficient and some of our services will not function properly.
+<br />
+However, you can still place orders .
+</p>
+<p class="privacyBold">
+Contacting Us
+</p>
+<p class="privacyLight">
+If there are any questions regarding this privacy policy you may contact us using the information below.
+<br />
+Atozfoods<br />
+chennai<br />
+tamil nadu<br />
+600061<br />
+india<br />
+abc@gmail.com<br />
+<br />
+Last Edited on 2015-04-21
+</p>
+    	</div>
+    </div><!-- /content -->
+</div>
+
+<div data-role="page" id="terms" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">T &nbsp;&&nbsp; C</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+	    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll >            
+        	<p class="privacyBold">Atozfoods Terms and Conditions</p>
+            <p class="privacyLight">
+            This privacy policy has been compiled to better serve those who are concerned with how their 'Personally identifiable information' (PII) is being used online. PII, as used in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.
+            </p>
+<p class="privacyBold">
+What personal information do we collect from the people that visit our blog, website or app?
+</p>
+<p class="privacyLight">
+When ordering or registering on our site, as appropriate, you may be asked to enter your name or other details to help you with your experience.
+</p>
+<p class="privacyBold">
+When do we collect information?
+</p>
+<p class="privacyLight">
+We collect information from you when you place an order, respond to a survey or enter information on our site.
+</p>
+
+<p class="privacyBold">
+How do we use your information?
+</p>
+<p class="privacyLight">
+We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:
+	<ol style="list-style:disc">
+      <li> To allow us to better service you in responding to your customer service requests.</li>
+      <li> To quickly process your transactions.</li>
+      <li> To send periodic emails regarding your order or other products and services.</li>
+      </ol>
+  </p>    
+<p class="privacyBold">
+How do we protect visitor information?
+</p>
+<p class="privacyLight">
+We do not use vulnerability scanning and/or scanning to PCI standards.
+<br />
+We do not use Malware Scanning.
+</p>
+
+<p class="privacyBold">
+
+Do we use 'cookies'?
+</p>
+<p class="privacyBold">
+We do not use cookies for tracking purposes
+</p>
+<p class="privacyLight">
+You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser (like Internet Explorer) settings. Each browser is a little different, so look at your browser's Help menu to learn the correct way to modify your cookies.
+<br />
+If you disable cookies off, some features will be disabled that make your site experience more efficient and some of our services will not function properly.
+<br />
+However, you can still place orders .
+</p>
+<p class="privacyBold">
+Contacting Us
+</p>
+<p class="privacyLight">
+If there are any questions regarding this privacy policy you may contact us using the information below.
+<br />
+Atozfoods<br />
+chennai<br />
+tamil nadu<br />
+600061<br />
+india<br />
+abc@gmail.com<br />
+<br />
+Last Edited on 2015-04-21
+</p>
+    	</div>
+    </div><!-- /content -->
+</div>
+
+<script type="text/javascript" src="js/jquery.swipebox.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper.scrollbar-2.1.js"></script>
+<script type="text/javascript" src="js/jquery.tabify.js"></script>
+<script type="text/javascript" src="js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="js/code.js"></script>
+<script type="text/javascript" src="js/load.js"></script>
+<script type="text/javascript" src="js/settings.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/jquery.mobile.iscrollview.js"></script>
+
+
+
+
+<!--Twitter Feed-->
+<!---
+<script type="text/javascript" src="js/twitter/jquery.tweet.js" charset="utf-8"></script>
+---->
+<script type="text/javascript" charset="utf-8">
+
+var $ = jQuery.noConflict();  
+/*
+jQuery(function($){
+	
+$(".tweet").tweet({
+  modpath: 'js/twitter/',
+  join_text: "auto",
+  username: "famousthemes",
+  count: 5,
+  auto_join_text_default: "we said,",
+  auto_join_text_ed: "we",
+  auto_join_text_ing: "we were",
+  auto_join_text_reply: "we replied",
+  auto_join_text_url: "we were checking out",
+  loading_text: "loading tweets..."
+});
+
+}); */
+</script>
+<script type="text/javascript">  
+function ajaxContact(theForm) {
+var $ = jQuery;
+$('#loader').fadeIn();
+var formData = $(theForm).serialize(),
+note = $('#Note');
+$.ajax({
+type: "POST",
+url: "contact-send.php",
+data: formData,
+success: function(response) {
+if ( note.height() ) {			
+note.fadeIn('fast', function() { $(this).hide(); });
+} else {
+note.hide();
+}
+$('#LoadingGraphic').fadeOut('fast', function() {
+//$(this).remove();
+if (response === 'success') {
+	
+	$('#formtitle').hide();
+	
+}
+// Message Sent? Show the 'Thank You' message and hide the form
+result = '';
+c = '';
+if (response === 'success') { 
+	result = 'Your message has been sent. Thank you!';
+	c = 'success';
+} else {
+	result = response;
+	c = 'error';
+}
+note.removeClass('success').removeClass('error').text('');
+var i = setInterval(function() {
+	if ( !note.is(':visible') ) {
+		note.html(result).addClass(c).slideDown('fast');
+		clearInterval(i);
+	}
+}, 40);    
+}); // end loading image fadeOut
+}
+});
+return false;
+}
+
+
+function loadlocaldatabase(){
+		db.transaction(populateDB, errorCB, successCB);	
+	}
+</script> 
+<script>
+function onDeviceReady() {
+	$.mobile.page.prototype.options.domCache = true;
+loadlocaldatabase();
+if (window.spinnerplugin) {
+        $.extend($.mobile, {
+            loading: function() {
+                // Show/hide spinner
+                var arg = arguments ? arguments[0] : '';
+                if (arg == 'show') spinnerplugin.show({'overlay':true});
+                else if (arg == 'hide') spinnerplugin.hide();           
+
+                // Compatibility with jQM 1.4
+                return { loader: function() { } }
+            }
+        }); 
+    }
+}
+</script>
+<script>
+jQuery(document).ready(function(){
+    // This button will increment the value
+    $('.qtyplus').click(function(e){
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If is not undefined
+        if (!isNaN(currentVal)) {
+            // Increment
+            $('input[name='+fieldName+']').val(currentVal + 1);
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(1);
+        }
+    });
+    // This button will decrement the value till 0
+    $(".qtyminus").click(function(e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If it isn't undefined or its greater than 0
+        if (!isNaN(currentVal) && currentVal > 0) {
+            // Decrement one
+            $('input[name='+fieldName+']').val(currentVal - 1);
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(1);
+        }
+    });
+});
+</script>
+
+<script>
+	var db = window.openDatabase("atozuser", "1.0", "atoz user local Database", 200000); //will create database Dummy_DB or open it
+
+function populateDB(tx) {
+	tx.executeSql('CREATE TABLE IF NOT EXISTS atozuser (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL , user_id INTEGER , phone INTEGER )');
+}
+function errorCB(err) {
+}
+function successCB() {
+	db.transaction(queryDB,errorCB);
+}
+
+
+function queryDB(tx){
+	tx.executeSql('SELECT * FROM atozuser ',[],querySuccess,errorCB);
+}
+function querySuccess(tx,result){
+	//alert('7');
+			var length = result.rows.length;
+			if(length >0)
+			{
+				for(var i=0; i< length ; i++)
+				{
+				var	user_id1 = result.rows.item(i).user_id;
+				var	username= result.rows.item(i).username;				
+				var	phone= result.rows.item(i).phone;
+				
+				globalusername = username;
+				globaluserid= user_id1;
+				globaluserphone= phone;
+				
+				}
+				//$.mobile.changePage('#placeorder',{ transition:'slide'  });   // Select date and time	
+				
+			}//if close
+			else{
+				globaluserid='';
+			}
+}
+
+function checkuserstatus()
+{
+	if(globaluserid!='' && globaluserid!=0 && globaluserid!=null )
+		{
+			$.mobile.changePage('#placeorder',{ transition:'slide'  });
+		}else{
+			$.mobile.changePage('#registration',{ transition:'slide'  });
+			}
+	}
+	
+	
+function validate_user()
+{
+var username = $('#username').val();
+var userphone = $('#userphone').val();
+var branch_id = $('#branchid').val();
+var companycode = $('#companycode').val();
+
+if(username !='' && userphone !='' && branch_id!='' && companycode!='')
+{
+$.support.cors = true;
+$.ajax({
+url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&companycode='+companycode,
+type:'POST',
+contentType: "application/json",
+async: true,
+dataType: 'json',
+crossDomain: true,
+success: function(data)
+	{
+			if(data.LoginResponse.status=='100')
+			{
+				var	login_Response = data.LoginResponse;
+				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
+			}else if(login_Response.status=='101'){
+				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
+			}
+			else{
+					navigator.notification.alert("Network problem , please try after sometime !!", alertCallback, "Ebbu", "OK");
+				}	
+	},
+error: function(e)
+{
+
+navigator.notification.alert("System error 83014. Please try again in a couple of minutes.", alertCallback, "Ebbu", "Done");
+}
+});
+
+}else{
+//	alert('92');
+navigator.notification.alert("Please enter details correctly.", alertCallback, "AtoZ", "Done");	
+	
+	}
+}	
+	
+	
+	
+	
+	
+function insertvalues(tx,parameter1,parameter2,parameter3)
+{
+//	alert('121');
+	globalusername = parameter1;
+	globaluserid= parameter2;
+	globaluserphone= parameter3;
+	//alert(parameter1+'==userid=='+parameter2+'===='+parameter3);
+	tx.executeSql('INSERT INTO atozuser(username, user_id , phone ) VALUES (?,?,?)',[parameter1,parameter2,parameter3],userinsert);
+	
+	}
+function userinsert()
+{
+	loadlocaldatabase();
+	$.mobile.changePage('#placeorder',{ transition:'slide'  });
+	
+	}
+	
+	
+function alertCallback(){
+}
+function ErrorCallBack(err){
+}
+
+function loadcompany()
+{
+	//alert('loadcompany 1 = = '+ ajaxpath+'loadcompany.php');
+$.support.cors = true;	
+$.ajax({
+url:ajaxpath+'loadcompany.php',
+type:'POST',
+contentType: "application/json",
+async: true,
+dataType: 'json',
+crossDomain: true,
+success: function(data)
+	{
+		//alert('load company success');
+		var companydetails=data.response;
+		var companyOptions='';
+		var companyData=companydetails.companydata;
+		
+		companyOptions+='<option value="">Select Company</option>';
+		
+$.each(companyData, function(index, element) {
+	//alert('<option value="'+element.companycode+'">'+element.company_name+'</option>');
+	companyOptions+='<option id="optioncompany'+element.companycode+'" value="'+element.companycode+'">'+element.company_name+'</option>';
+	});
+	
+	$('#companycode').html('');
+	$('#companycode').append(companyOptions);
+	$('#companycodeEdit').html('');
+	$('#companycodeEdit').append(companyOptions);
+	
+		
+	},
+error:function(e)
+{
+//	alert("Error =  "+ e.message );
+	
+	}	
+		});
+	}
+	
+
+function loadbranch()
+{
+	if($('#companycode').val()!='')
+	{
+	//		alert('loadBranch 1');
+			
+		//	alert('PAth = '+ajaxpath+'loadbranch.php?companycode='+$('#companycode').val());
+			$.support.cors = true;	
+			 $.ajax({
+			url:ajaxpath+'loadbranch.php?companycode='+$('#companycode').val(),
+			type:'POST',
+			contentType: "application/json",
+			async: true,
+			dataType: 'json',
+			crossDomain: true,
+			success: function(data)
+				{
+				//	alert('load branch success');
+					var branchdetails=data.response;
+					var branchOptions='';
+					
+					if(branchdetails.status=='100')
+					{
+						var branchData=branchdetails.branchdata;
+						branchOptions+='<option value="">Select branch</option>';
+						$.each(branchData, function(index, element) {
+				//		alert('<option value="'+element.branch_id+'">'+element.branch_name+'</option>');
+						branchOptions+='<option value="'+element.branch_id+'">'+element.branch_name+'</option>';
+						});
+						$('#branchid').html('');
+						$('#branchid').append(branchOptions);
+						$('#branchidEdit').html('');
+						$('#branchidEdit').append(branchOptions);
+
+					}else{
+						
+						navigator.notification.alert("Sorry Currently we are not serving this company , Kindly try after few days", alertCallback, "AtoZ", "Done");	
+						}
+					
+				},
+			error:function(e)
+			{
+						navigator.notification.alert("Server error ,Kindly try after some time.", alertCallback, "AtoZ", "Done");	
+				}	
+			
+					});
+		
+		}
+	else{
+		
+		navigator.notification.alert("Kindly Select Your company", alertCallback, "AtoZ", "Done");	
+		
+		}	
+	
+	}
+
+
+$(document).ready(function () {
+//	alert('loadcompany');
+	loadcompany();
+});
+
+
+
+function loadmenutime()
+{
+	
+	//alert(ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid);
+	
+if($('#menu_date').val()!='')
+{	
+//alert('inside menu_date');
+
+	$.support.cors = true;	
+	$.ajax({
+	url:ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid,
+	type:'POST',
+	contentType: "application/json",
+	async: true,
+	dataType: 'json',
+	crossDomain: true,
+	success: function(data)
+		 {
+			var menuResponse=data.response;
+			var menuoptions='';
+			menuoptions+='<option value="">Select delivery time</option>';
+			//alert('data.status.status =' +data.status.status);
+			if(data.status.status=='100')
+			{
+				$.each(menuResponse, function(index, element) {
+						menuoptions+='<option value="'+element.menu_type_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
+					});
+					
+	//				alert(menuoptions);
+					$('#delivery_time').html('');
+					$('#delivery_time').append(menuoptions);
+				
+			}else{
+				
+			//	alert('status thappu');
+				}
+
+				
+				
+			},
+		error: function(e)
+		{
+				navigator.notification.alert("Server error ,Kindly try after some time.", alertCallback, "AtoZ", "Done");	
+			}	
+		
+		});
+	
+	}//else do nothing
+	
+}
+
+
+
+function loadmenulist()
+{
+	
+//alert(ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_date_id='+$('#delivery_time').val());
+
+	$.support.cors = true;	
+	
+	MenuTypeId=$('#delivery_time').val();
+	MenuDate=$('#menu_date').val();
+	$.ajax({
+	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val(),
+	type:'POST',
+	contentType: "application/json",
+	async: true,
+	dataType: 'json',
+	crossDomain: true,
+	success: function(data)
+		 {
+			var menuResponse=data.response;
+			var menuoptions='';
+	//		alert('data.status.status =' +data.status.status);
+			if(data.status.status=='100')
+			{
+					var outer_menu='';
+					var inner_menu='';
+					var productResponse=data.response;
+					globalmenuObj=data.response;
+
+//alert('aall ok');
+
+var cuisine_array=[];
+var category_array=[];
+var food_type_array=[];
+
+
+
+$.each(productResponse, function(index, element) {
+MenuDateId=data.menu_date_id;	
+var classcuisine_name=element.cuisine_name;
+	classcuisine_name=classcuisine_name.replace(" ",""); 
+var classcategory_name=element.category_name;
+	classcategory_name=classcategory_name.replace(" ",""); 
+var classfood_type=element.food_type;
+	classfood_type=classfood_type.replace(" ",""); 
+	
+	if(jQuery.inArray(element.category_name,category_array)==-1)
+	{ category_array.push(element.category_name); }
+	
+	if(jQuery.inArray(element.cuisine_name,cuisine_array)==-1)
+	{ cuisine_array.push(element.cuisine_name); }
+
+	if(jQuery.inArray(element.food_type,food_type_array)==-1)
+	{ food_type_array.push(element.food_type); }
+
+outer_menu+='<li class="'+classcuisine_name+' '+classcategory_name+'  '+classfood_type+' showAll" id="product'+element.product_id+'" ><a href=""><img src="'+imagepath+element.product_image+'" style="vertical-align:middle; width:100% !important; height:100% !important;" />';
+outer_menu+='<p class="customLineheight" style="width:100% !important; ">';
+outer_menu+='<span style="width:80% !important ;float:left !important;" onclick=viewproductdescription(\''+element.product_id+'\')>'+element.product_name+'<br />cusine name: '+element.cuisine_name+'<br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. ';
+if(element.discount_percentage!=0)
+{
+outer_menu+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span> </span><input type="hidden" value="'+element.discount_price+'" id="product_price'+element.product_id+'"  >';
+}else{
+outer_menu+='<span class=" amountfont">'+element.product_price+'</span></span><input type="hidden" value="'+element.product_price+'" id="product_price'+element.product_id+'"  >';
+	}
+outer_menu+='</span><span style="width:20% !important; float:right !important;">';
+outer_menu+='<span  style="position:relative; top:0px; width:100%;"  onclick=addtocart(\''+element.product_id+'\') >';
+outer_menu+='<img class="unselectedproduct" src="images/order.jpg" id="productselect'+element.product_id+'" style="width:100%; max-width:50px" /></span>';
+outer_menu+='<span style="position:relative; top:10px; width:100%; right:0px;" ><input class="productquantity" onblur=resetqty(\'productqty'+element.product_id+'\',\''+element.product_id+'\') disabled id="productqty'+element.product_id+'"  type="number" style="width:30px" placeholder="Qty" /></span></span>';
+outer_menu+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
+if(element.food_type=='veg')
+{
+outer_menu+='<img src="images/veg.jpg" style="max-width:30px;top:10px;" />';
+}else{
+outer_menu+='<img src="images/nonveg.jpg" style="max-width:30px;top:10px;" />';	
+	}
+outer_menu+='</span></p></a></li>';    
+
+
+
+inner_menu+='<span class="hideAllDescription" id="description'+element.product_id+'" style="display:none ;">';
+inner_menu+='<h2 class="page_title" style="padding-top:20px !important; padding-left:5% !important;" id="product_name">'+element.product_name;
+if(element.food_type=='veg'){ inner_menu+=' <img src="images/veg.jpg" style="max-width:30px;top:10px;" /></h2>'; }
+else{  inner_menu+=' <img src="images/nonveg.jpg" style="max-width:30px;top:10px;" /></h2>'; }
+inner_menu+='<center> <img src="'+imagepath+element.product_image+'"  style="width:90%; max-height:200px !important;" /> </center>';
+inner_menu+='<h4 style="padding-left:5%;">Description : </h4>   ';
+inner_menu+='<center>';
+inner_menu+='<p  style="width:90% !important"; >'+element.product_description+'</p>';
+inner_menu+='</center><p style="padding-left:5% !important; font-size:14px !important">';
+inner_menu+='Product Price : Rs ';
+if(element.discount_percentage!=0)
+{
+inner_menu+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span>';
+}else{
+inner_menu+='<span  class="amountfont">'+element.product_price+'</span>';	
+	}
+inner_menu+='<br /><br />Cusine type : '+element.cuisine_name+' <br /></p>';
+inner_menu+='<center><p style=" font-size:18px;" class="fontCustom" onclick=addtocart(\''+element.product_id+'\')>';
+inner_menu+='<span id="addcarttext'+element.product_id+'"> Add to Card  </span>';
+inner_menu+='<img class="unselectedproduct" src="images/order.jpg" id="productselectdescription'+element.product_id+'" style="width:100%; max-width:70px; vertical-align:middle !important" />';
+inner_menu+='</p></center><center><div style="width:50%;" class="ui-field-contain">';
+inner_menu+='<input  disabled id="productdescriptionqty'+element.product_id+'"  class="productquantity" onblur=resetqty(\'productdescriptionqty'+element.product_id+'\',\''+element.product_id+'\')  type="number" style="width:30px" placeholder="Qty" /></div></center></span>';
+ 
+ 		   });
+			   
+			   
+		//   alert(inner_menu);
+
+				$('#menulistitems').empty().append(outer_menu);
+				$('#menulistitems').trigger("create");
+				$('#menulistitems').listview().listview('refresh');
+				
+				$('#descriptionpage').html('');
+				$('#descriptionpage').html(inner_menu);
+				
+				
+var filtermenu='';
+filtermenu+='<ul class="fontCustom filterlist" style="text-decoration:none; list-style:none !important; padding-left:0px !important; margin-left:0px !important; ">';
+
+filtermenu+='<li class="filterTitle" ><center><label>Cusine</label></center></li>';
+for(var i=0; i<cuisine_array.length;i++)
+{
+var classcuisine_name=cuisine_array[i];
+	classcuisine_name=classcuisine_name.replace(" ",""); 
+	
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+classcuisine_name+'" name="cusine[]"  />&emsp; '+cuisine_array[i]+'</label></li>';
+}
+filtermenu+='<li class="filterTitle"><center><label>Category</label></center></li>';
+for(var i=0; i<category_array.length;i++)
+{
+var classcategory_name=category_array[i];
+	classcategory_name=classcategory_name.replace(" ",""); 
+
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+classcategory_name+'" name="category[]"  />&emsp; '+category_array[i]+'</label></li>';
+}
+filtermenu+='<li class="filterTitle"><center><label>Type</label></center></li>';
+for(var i=0; i<food_type_array.length;i++)
+{
+	var classfood_type=food_type_array[i];
+	classfood_type=classfood_type.replace(" ",""); 
+
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+classfood_type+'" name="cusine[]"  />&emsp; '+food_type_array[i]+'</label></li>';
+}
+filtermenu+='</ul>';
+				
+			//	alert('filter menu = '+filtermenu);
+				$('#filtermenu').html('');
+				$('#filtermenu').html(filtermenu);
+				
+
+$('#filtermenu input:checkbox').on('click',function(){
+//	alert(jQuery('#filtermenu input[type=checkbox]:checked').length);
+	
+	
+		if(jQuery('#filtermenu input[type=checkbox]:checked').length) { 
+				$('.showAll').hide();
+				$('.'+$(this).val()).show();
+		}else{
+			//	alert('no count = '+ jQuery('#filtermenu input[type=checkbox]:checked').length);
+			$('.showAll').show();
+			}
+		
+		
+		
+	});
+
+				
+		///		alert('all ok2');
+				//$('#menulist').trigger("create");
+			//	$("#menuscroll").iscrollview("scrollTo", 0, 0, 0, false);				
+		//		alert('all ok4');
+				
+				
+			}
+		
+		//spinnerplugin.hide();		
+				$.mobile.changePage('#menulist',{ transition:'slide'  })
+			
+			
+		 },
+		 error: function(){
+			 
+		spinnerplugin.hide();	
+	//	alert('Errror connecting to server please try later');
+			 
+			 }
+	});
+}
+
+
+function viewproductdescription(pid)
+{
+	$('.hideAllDescription').hide();
+	$('#description'+pid).show();
+	
+	$.mobile.changePage('#viewproduct',{ transition:'slide'} );
+	
+	}
+
+</script>
+<script>
+$( document ).on( "pagecreate", "#menulist", function() {
+    $( document ).on( "swipeleft swiperight", "#menulist", function( e ) {
+        // We check if there is no open panel on the page because otherwise
+        // a swipe to close the left panel would also open the right panel (and v.v.).
+        // We do this by checking the data that the framework stores on the page element (panel: open).
+        if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
+            if ( e.type === "swipeleft" ) {
+                $( "#right-panel" ).panel( "open" );
+            } else if ( e.type === "swiperight" ) {
+                $( "#left-panel" ).panel( "open" );
+            }
+        }
+    });
+});
+
+
+
+
+
+
+function addtocart(pid)
+{
+//	alert('pid = '+pid);
+//	alert('has class = '+$('#productselect'+pid).hasClass("unselectedproduct"));
+	if($('#productselect'+pid).hasClass("unselectedproduct") || $('#productselectdescription'+pid).hasClass("unselectedproduct"))
+	{
+//		alert('selected');
+		$('#productselect'+pid).removeClass("unselectedproduct");
+		$('#productselectdescription'+pid).removeClass("unselectedproduct");
+		$('#productselect'+pid).addClass("selectedproduct");
+		$('#productselectdescription'+pid).addClass("selectedproduct");
+		
+		$('#productqty'+pid).prop("disabled", false);
+		$('#productqty'+pid).val('1');
+		$('#productdescriptionqty'+pid).prop("disabled", false);
+		$('#productdescriptionqty'+pid).val('1');
+		
+		$('#addcarttext'+pid).html('Remove from Cart');
+		
+		cart_array.push(pid);
+		
+		}else{
+//			alert('de-selected');
+		$('#productselect'+pid).removeClass("selectedproduct");
+		$('#productselectdescription'+pid).removeClass("selectedproduct");
+		$('#productselect'+pid).addClass("unselectedproduct");
+		$('#productselectdescription'+pid).addClass("unselectedproduct");
+		$('#productqty'+pid).prop("disabled", true);
+		$('#productqty'+pid).val('');
+		$('#productdescriptionqty'+pid).prop("disabled", true);
+		$('#productdescriptionqty'+pid).val('');
+
+		$('#addcarttext'+pid).html('Add to Cart');
+		cart_array.pop(pid);
+		
+		}
+	
+	}
+
+
+function resetqty(qtyid , pid)
+{
+		var qty = $('#'+qtyid).val();
+		$('#productqty'+pid).val(qty);
+		$('#productdescriptionqty'+pid).val(qty);
+		$('#productcartqty'+pid).val(qty);
+		
+		if($.mobile.activePage.is("#viewcart"))
+		{
+			gotocart();
+			}
+				
+	}
+
+
+function gotocart()
+{
+
+	
+		final_cartjsonObj=[];
+		TotalCartAmount=0;
+			for(var i=0; i<cart_array.length;i++)
+				{
+					values ={}	;
+					values["product_id"]=cart_array[i];
+					values["product_qty"]=$('#productqty'+cart_array[i]).val();
+					values["product_amount"]=$('#product_price'+cart_array[i]).val();
+					TotalCartAmount = TotalCartAmount + ($('#product_price'+cart_array[i]).val() * $('#productqty'+cart_array[i]).val() );
+					final_cartjsonObj.push(values);
+				}
+		$('#totalbill').html('Rs '+TotalCartAmount);		
+				
+	//alert("final cart = "+ JSON.stringify(final_cartjsonObj));	
+	viewCartList();
+}
+
+
+function viewCartList()
+{
+var cartlist='';
+$.each(globalmenuObj, function(index, element) {
+	
+	$(final_cartjsonObj).each(function() {
+    if (this.product_id == element.product_id) {
+	var TotalQuantity =	this.product_qty;	
+	var	productTotal = (TotalQuantity) * (element.product_price);
+	
+	
+		
+      //  alert("found:  " + JSON.stringify(this));
+  
+cartlist+='<li><a ><img src="'+imagepath+element.product_image+'"  /><p>';
+cartlist+='<span style="float:left; width:70% !important;  line-height:25px !important;" onclick=viewproductdescription(\''+element.product_id+'\')>';
+cartlist+=element.product_name+' &emsp;';
+if(element.food_type=='veg')
+{
+cartlist+='<img src="images/veg.jpg"  style="max-width:30px; vertical-align:middle !important"  ><br />';
+}else{
+cartlist+='<img src="images/nonveg.jpg"  style="max-width:30px; vertical-align:middle !important"  ><br />';	
+	}
+cartlist+='Cuisine : '+element.cuisine_name+' <br />';
+if(element.discount_percentage!=0)
+{
+cartlist+='Rs &emsp;<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span>';
+}else{
+cartlist+='Rs &emsp;<span class=" amountfont">'+element.product_price+'</span>';	
+	}
+cartlist+='</span><span style="float:right; width:30% !important; line-height:25px;" >';
+cartlist+='<input class="productquantity" onblur=resetqty(\'productcartqty'+element.product_id+'\',\''+element.product_id+'\')  id="productcartqty'+element.product_id+'"  type="number" placeholder="Qty"  value="'+TotalQuantity+'"  /><span class="amountfont">Rs <span id="productTotal'+element.product_id+'" >'+productTotal+'</span></span><br />';
+cartlist+='<span style=" position:relative; right:40%; top:8px; float:right;background-color:#F00;padding:4px; border:1px solid #999; border-radius:50% ;color:#FFF" onclick=removeProduct(\''+element.product_id+'\')><img src="images/delete.png" style="max-width:18px; vertical-align:middle" />';
+cartlist+='</span></span></p></a></li>';
+
+				  }
+				});
+
+
+			});
+			
+//			alert(cartlist);
+				$('#viewcartitems').empty().append(cartlist);
+				$('#viewcartitems').trigger("create");
+				$('#viewcartitems').listview().listview('refresh');
+				
+				$.mobile.changePage('#viewcart',{ transition:'slide' });
+	
+	}
+	
+	
+	function findAndRemove(array, property, value) {
+}
+
+//Checks countries.result for an object with a property of 'id' whose value is 'AF'
+//Then removes it ;p
+
+	
+function removeProduct(pid)
+{ 
+/*   $.each(final_cartjsonObj, function(index, result) {
+	   
+	   alert("result[product_id] ="+ result[product_id] );
+	   
+      if(result[product_id] == pid) {
+          //Remove from array
+		  alert(result[product_id]);
+          final_cartjsonObj.splice(index, 1);
+      }    
+   });
+   */
+   
+    addtocart(pid);
+	gotocart();
+}
+	
+
+function loaduserdetails()
+{
+	
+//	alert("globaluserid = "+globaluserid);
+	
+	$.support.cors = true;	
+	$.ajax({
+	url:ajaxpath+'loaduserdetails.php?user_id='+globaluserid,
+	type:'POST',
+	contentType: "application/json",
+	async: true,
+	dataType: 'json',
+	crossDomain: true,
+	success: function(data)
+	 {
+		var userdetailsResponse=data.response;
+		//var menuoptions='';
+		
+		var UserDetails=userdetailsResponse.user_details;
+	//			alert('userdetailsResponse.status =' +userdetailsResponse.status);
+		if(userdetailsResponse.status=='100')
+		{
+			$('#usernameEdit').val(UserDetails.username);
+			$('#userphoneEdit').val(UserDetails.phone);
+			
+			var optionValue  = UserDetails.company_id;
+	//		alert("optionValue = " +optionValue);
+			
+			
+					$("#companycodeEdit option").each(function(){
+							$(this).on( "click", function(event, ui) {
+							$(this).attr('selected' , true);
+							$('#companycodeEdit').selectmenu('refresh');                
+						});         
+					});    
+					
+					$('#companycodeEdit option#optioncompany'+optionValue).trigger('click'); 
+
+	//				alert(" UserDetails.branch_id = "+UserDetails.branch_id);
+
+			loadbranchEdit(UserDetails.branch_id);	
+			$.mobile.changePage('#myaccount',{ transition:'slide' });
+		}
+	 },
+	 error:function(){
+		 
+		 }
+	 
+	
+	});
+
+}
+
+function loadbranchEdit(branch_id)
+{
+//	alert(" $('#companycodeEdit').val()= "+ $('#companycodeEdit').val());
+	if($('#companycodeEdit').val()!='')
+	{
+			$.support.cors = true;	
+			$.ajax({
+			url:ajaxpath+'loadbranch.php?companycode='+$('#companycodeEdit').val(),
+			type:'POST',
+			contentType: "application/json",
+			async: true,
+			dataType: 'json',
+			crossDomain: true,
+			success: function(data)
+				{
+				//	alert('load branch success');
+					var branchdetails=data.response;
+					var branchOptions='';
+					
+					if(branchdetails.status=='100')
+					{
+						var branchData=branchdetails.branchdata;
+						branchOptions+='<option value="">Select branch</option>';
+						$.each(branchData, function(index, element) {
+				//		alert('<option value="'+element.branch_id+'">'+element.branch_name+'</option>');
+						branchOptions+='<option value="'+element.branch_id+'">'+element.branch_name+'</option>';	
+						});
+						$('#branchidEdit').html('');
+						$('#branchidEdit').append(branchOptions);
+						
+						$("#branchidEdit option[value="+branch_id+"]").prop('selected', true);		
+						
+					}else{
+						
+						navigator.notification.alert("Sorry Currently we are not serving this company , Kindly try after few days", alertCallback, "AtoZ", "Done");	
+						}
+					
+				},
+			error:function(e)
+			{
+						navigator.notification.alert("Server error ,Kindly try after some time.", alertCallback, "AtoZ", "Done");	
+				}	
+			
+					});
+		
+		}
+	else{
+		navigator.notification.alert("Kindly Select Your company", alertCallback, "AtoZ", "Done");	
+		}	
+	}	
+	
+function changepage(){
+	 $.mobile.changePage('#orderhistroyview',{ transition:'slide' });
+	}	
+	
+function changepagetrack(OrderID){
+	
+	//	alert('aasassa=='+globaluserid);
+		$.support.cors = true;	
+		$.ajax({
+		url:ajaxpath+'trackorderstatusview.php?user_id='+globaluserid+'&order_id='+OrderID,
+		type:'POST',
+		contentType: "application/json",
+		async: true,
+		dataType: 'json',
+//		data:JSON.stringify(Obj),
+		crossDomain: true,
+		success: function(data)
+			{
+			 //  	alert(JSON.stringify(data));
+				var OrderListObj = data.response;
+				var statusObj = data.status;
+				var trackorderStatus='';
+				if(statusObj.status=='100')
+				{
+				//	alert('order_id = '+ OrderListObj.order_id );
+					
+					var orderid = OrderListObj.order_id;
+					var id = OrderListObj.id;
+					var order_date = OrderListObj.order_date;
+					var order_amount = OrderListObj.order_amount;
+					var order_status = OrderListObj.order_status;
+					var payment_status = OrderListObj.payment_status;
+					var order_status_count = OrderListObj.order_status_count;
+					var StatusClassArray=[];
+					
+					if(order_status_count!=0 && order_status_count!=5)
+					{
+						for(var i=0;i<4;i++)
+						{
+							   if(i<order_status_count)
+							   {
+							    StatusClassArray.push('circle-processed');	
+								}else{
+								StatusClassArray.push('circle-processing');	
+									}
+							
+							}
+					}else{
+							for(var i=0;i<4;i++)
+							{
+							 	StatusClassArray.push('circle-processing');	
+							}
+						
+						}
+							
+					
+trackorderStatus+='<br /><span onclick="vieworderdetails()"><center><div style="height:30px !important; width:70%"   >';
+trackorderStatus+='<center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Id : '+orderid+'</span></center>';
+trackorderStatus+='</div><div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Date : '+order_date+'  ,  '+payment_status+' </span></center>';
+trackorderStatus+='</div></center></span><div><center><div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >';
+trackorderStatus+='<span style="position:relative; top:30% !important"><center> Bill Amount : Rs '+payment_status+'  /-</center></span></div></center></div>';
+trackorderStatus+='<div style="position:absolute !important; top:150; left:0;right:0; width:100%; height:200px">';
+trackorderStatus+='<div style="position:relative !important; top:20px; right:52%; left:2%; text-align:right; width:43% ;height:24%">Order Placed';
+trackorderStatus+='</div><div style="position:relative !important; top:17%; left:57%; right:2%; width:43%; height:24%">';
+trackorderStatus+='Order is cooking now</div><div style="position:relative !important; top:28%; right:52%; left:2%; width:43%;  text-align:right; height:24%">';
+trackorderStatus+='Order created & Packed</div><div style="position:relative !important; top:34%; left:57%; right:2%; width:43%; height:24%">';
+trackorderStatus+='Order Dispatched for delivery</div></div>';
+trackorderStatus+='<div style="border:2px solid #000; border-radius:10px; position:absolute; left:50%; height:200px; top:150px; width:0% !important">';
+trackorderStatus+='<div id="status1" class="'+StatusClassArray[0]+'" style="position:relative;top:-15px;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>';
+trackorderStatus+='<div id="status2" class="'+StatusClassArray[1]+'" style="position:relative;top:11%;left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%" /></div>';
+trackorderStatus+='<div id="status3" class="'+StatusClassArray[2]+'" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>';
+trackorderStatus+='<div id="status4" class="'+StatusClassArray[3]+'" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div></div>';
+
+//alert(trackorderStatus);
+
+//					$('#trackorderstatusview').html('');
+	//				$('#trackorderstatusview').html(trackorderStatus);
+					
+				}
+			}
+		});
+	
+	
+		$.mobile.changePage('#trackorderstatus',{ transition:'slide' });
+	}	
+function vieworderdetails()
+{
+	
+	}
+	
+	
+function checkoutpayement()
+{
+//	alert(JSON.stringify(final_cartjsonObj));
+	
+	var MenuDetails={ "MenuTypeId":MenuTypeId, "MenuDate":MenuDate , "MenuDateId":MenuDateId ,"TotalCartAmount":TotalCartAmount }
+	
+	var UserDetails={ "UserId":globaluserid }
+	
+ var Obj = {
+	 		"MenuDetails": MenuDetails, 
+			"UserDetails": UserDetails,
+			"CartDetails": final_cartjsonObj
+	 				}	
+	
+//	alert(JSON.stringify(Obj));
+	
+			$.support.cors = true;	
+			$.ajax({
+			url:ajaxpath+'checkoutorder.php',
+			type:'POST',
+			contentType: "application/json",
+			async: true,
+			dataType: 'json',
+			data:JSON.stringify(Obj),
+			crossDomain: true,
+			success: function(data)
+				{
+		//			alert("Recieved data"+ JSON.stringify(data));
+				},
+			error:function(data)
+			{
+	//				alert('error');
+				}	
+			
+				});	
+	
+	
+	}	
+function loadliveorder()	
+{
+//	alert('aasassa=='+globaluserid);
+		$.support.cors = true;	
+		$.ajax({
+		url:ajaxpath+'loadliveorders.php?user_id='+globaluserid,
+		type:'POST',
+		contentType: "application/json",
+		async: true,
+		dataType: 'json',
+//		data:JSON.stringify(Obj),
+		crossDomain: true,
+		success: function(data)
+			{
+			   	//alert(JSON.stringify(data));
+				
+				var OrderListObj = data.response;
+				var statusObj = data.status;
+				var trackorderList='';
+				if(statusObj.status=='100')
+				{
+				$.each(OrderListObj, function(index, element) {
+					 trackorderList+='<li onclick="changepagetrack(\''+element.id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
+				});
+				
+				$('#trackorderlist').empty().append(trackorderList);
+				$('#trackorderlist').trigger("create");
+				$('#trackorderlist').listview().listview('refresh');
+				$.mobile.changePage('#trackorder',{  transition:'slide' });
+				
+				}else{
+//				alert('no order made yet');
+				$.mobile.changePage('#trackorder',{  transition:'slide' });
+					}
+			},
+		error:function(){
+			}	
+		});
+	
+	
+	
+	}
+</script>
+
+
+</body>
+</html>
