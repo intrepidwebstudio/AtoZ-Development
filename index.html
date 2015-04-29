@@ -948,8 +948,6 @@ Last Edited on 2015-04-21
 <script type="text/javascript" src="js/jquery.mobile.iscrollview.js"></script>
 
 
-
-
 <!--Twitter Feed-->
 <!---
 <script type="text/javascript" src="js/twitter/jquery.tweet.js" charset="utf-8"></script>
@@ -1894,9 +1892,10 @@ function changepagetrack(OrderID){
 							{
 							 	StatusClassArray.push('circle-processing');	
 							}
-						
 						}
-							
+						
+						
+						alert(StatusClassArray);
 					
 trackorderStatus+='<br /><span onclick="vieworderdetails()"><center><div style="height:30px !important; width:70%"   >';
 trackorderStatus+='<center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Id : '+orderid+'</span></center>';
@@ -1915,10 +1914,10 @@ trackorderStatus+='<div id="status2" class="'+StatusClassArray[1]+'" style="posi
 trackorderStatus+='<div id="status3" class="'+StatusClassArray[2]+'" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>';
 trackorderStatus+='<div id="status4" class="'+StatusClassArray[3]+'" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div></div>';
 
-//alert(trackorderStatus);
+	alert(trackorderStatus);
 
-//					$('#trackorderstatusview').html('');
-	//				$('#trackorderstatusview').html(trackorderStatus);
+				$('#trackorderstatusview').html('');
+				$('#trackorderstatusview').html(trackorderStatus);
 					
 				}
 			}
