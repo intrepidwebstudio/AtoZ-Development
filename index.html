@@ -1026,7 +1026,7 @@ function loadlocaldatabase(){
 </script> 
 <script>
 function onDeviceReady() {
-	$.mobile.page.prototype.options.domCache = true;
+//	$.mobile.page.prototype.options.domCache = true;
 loadlocaldatabase();
 if (window.spinnerplugin) {
         $.extend($.mobile, {
@@ -1944,9 +1944,9 @@ function checkoutpayement()
 	 		"MenuDetails": MenuDetails, 
 			"UserDetails": UserDetails,
 			"CartDetails": final_cartjsonObj
-	 				}	
+	 				};	
 	
-//	alert(JSON.stringify(Obj));
+	alert(JSON.stringify(Obj));
 	
 			$.support.cors = true;	
 			$.ajax({
@@ -1959,12 +1959,12 @@ function checkoutpayement()
 			crossDomain: true,
 			success: function(data)
 				{
-		//			alert("Recieved data"+ JSON.stringify(data));
+			alert("Recieved data"+ JSON.stringify(data));
 				},
 			error:function(data)
 			{
-	//				alert('error');
-				}	
+				alert('error');
+			}	
 			
 				});	
 	
