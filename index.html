@@ -24,6 +24,7 @@
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="childbrowser.js"></script>
 
 	<script> 
 	document.onreadystatechange = function(e)
@@ -1028,6 +1029,7 @@ function loadlocaldatabase(){
 function onDeviceReady() {
 //	$.mobile.page.prototype.options.domCache = true;
 loadlocaldatabase();
+browser_setting();
 if (window.spinnerplugin) {
         $.extend($.mobile, {
             loading: function() {
@@ -1960,6 +1962,8 @@ function checkoutpayement()
 			success: function(data)
 				{
 			alert("Recieved data"+ JSON.stringify(data));
+			
+			loadurl('link');
 				},
 			error:function(data)
 			{
@@ -2012,6 +2016,80 @@ function loadliveorder()
 	
 	
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	        var iabRef = null;
+	    function iabLoadStart(event) {
+        }
+	   function iabLoadStop(event) {
+		}
+        function iabClose(event) {
+          iabRef.removeEventListener('loadstart', iabLoadStart);
+          iabRef.removeEventListener('loadstop', iabLoadStop);
+          iabRef.removeEventListener('exit', iabClose);
+          iabRef.removeEventListener('share', iabClose);
+		  iabRef.close();
+        }
+        function iabShare(event){
+        }
+		
+		
+		
+		
+        function loadurl(url_link){
+			
+			//alert('urrl  = '+ url_link);
+			iabRef = window.open('http://www.atuzfood.com/payment/pay.php', '_blank','toolbarposition=bottom,location=no,presentationstyle=formsheet,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
+			
+			$.support.cors = true;
+			iabRef.addEventListener('exit', iabClose);
+            iabRef.addEventListener('share', iabShare);
+            iabRef.addEventListener('loadstart', iabLoadStart);
+            iabRef.addEventListener('loadstop', iabLoadStop);
+
+			
+			
+        }
+		
+	function alertCallback(){
+}	
+function browser_setting()
+	{	
+        $(document).bind( 'mobileinit', function(){
+		
+                         $.mobile.loader.prototype.options.text ="";
+                         $.mobile.loader.prototype.options.textVisible = false;
+                         $.mobile.loader.prototype.options.theme ="d";
+                         $.mobile.loader.prototype.options.textonly = false;
+                         $.mobile.loader.prototype.options.html ="<img src='../loader.png'/>";
+                         $.mobile.allowCrossDomainPages = true;
+                        });
+	}
+
+
+	
+	
+	
 </script>
 
 
