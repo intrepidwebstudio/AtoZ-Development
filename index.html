@@ -2040,19 +2040,33 @@ function loadliveorder()
 	
 	        var iabRef = null;
 	    function iabLoadStart(event) {
+			 navigator.notification.activityStart("Please Wait", "Its loading....");
+         alert(event.type + ' - ' + event.url);
         }
 	   function iabLoadStop(event) {
+		   
+		    navigator.notification.activityStop();
+         alert(event.type + ' - ' + event.url);
 		}
         function iabClose(event) {
+			
+			 alert(event.type);
           iabRef.removeEventListener('loadstart', iabLoadStart);
           iabRef.removeEventListener('loadstop', iabLoadStop);
           iabRef.removeEventListener('exit', iabClose);
+		  iabRef.removeEventListener('loaderror', iabLoadError);
           iabRef.removeEventListener('share', iabClose);
 		  iabRef.close();
         }
         function iabShare(event){
         }
+		function iabLoadError(event){
 		
+		  navigator.notification.activityStop();
+         alert(event.type + ' - ' + event.message);
+			
+			
+        }
 		
 		
 		
@@ -2065,6 +2079,7 @@ function loadliveorder()
 			iabRef.addEventListener('exit', iabClose);
             iabRef.addEventListener('share', iabShare);
             iabRef.addEventListener('loadstart', iabLoadStart);
+			iabRef.addEventListener('loaderror', iabLoadError);
             iabRef.addEventListener('loadstop', iabLoadStop);
 
 			
