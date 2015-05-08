@@ -1965,9 +1965,9 @@ function checkoutpayement()
 			alert("Recieved data"+ JSON.stringify(data));
 			
 			var order_id=data.orderId; 
+			var token=data.token;
 			
-			
-			loadurl(TotalCartAmount,order_id);
+			loadurl(TotalCartAmount,order_id,token);
 				},
 			error:function(data)
 			{
@@ -2051,10 +2051,10 @@ function loadliveorder()
 		   //alert(event.type + ' - ' + event.message);
         }
 		
-        function loadurl(amount,ord_id){
+        function loadurl(amount,ord_id,token){
 			
 			//alert('urrl  = '+ url_link);
-			iabRef = window.open('http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type=normal', '_blank','toolbarposition=top,location=yes,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
+			iabRef = window.open('http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token, '_blank','toolbarposition=top,location=yes,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
 			
 			$.support.cors = true;
 			iabRef.addEventListener('exit', iabClose);
