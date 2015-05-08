@@ -2019,38 +2019,20 @@ function loadliveorder()
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	        var iabRef = null;
+
+
+     var iabRef = null;
 	    function iabLoadStart(event) {
 			 navigator.notification.activityStart("Please Wait", "Its loading....");
-         alert(event.type + ' - ' + event.url);
+    //     alert(event.type + ' - ' + event.url);
         }
 	   function iabLoadStop(event) {
-		   
 		    navigator.notification.activityStop();
-         alert(event.type + ' - ' + event.url);
+  //       alert(event.type + ' - ' + event.url);
 		}
         function iabClose(event) {
 			
-			 alert(event.type);
+			 alert(event.type );
           iabRef.removeEventListener('loadstart', iabLoadStart);
           iabRef.removeEventListener('loadstop', iabLoadStop);
           iabRef.removeEventListener('exit', iabClose);
@@ -2063,7 +2045,7 @@ function loadliveorder()
 		function iabLoadError(event){
 		
 		  navigator.notification.activityStop();
-         alert(event.type + ' - ' + event.message);
+//         alert(event.type + ' - ' + event.message);
 			
 			
         }
@@ -2073,7 +2055,7 @@ function loadliveorder()
         function loadurl(url_link){
 			
 			//alert('urrl  = '+ url_link);
-			iabRef = window.open('http://www.atuzfood.com/payment/pay.php', '_blank','toolbarposition=bottom,location=no,presentationstyle=formsheet,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
+			iabRef = window.open('http://www.atuzfood.com/payment/pay.php', '_blank','toolbarposition=top,location=no,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
 			
 			$.support.cors = true;
 			iabRef.addEventListener('exit', iabClose);
