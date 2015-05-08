@@ -1,6 +1,6 @@
 // JavaScript Document
 var ajaxpath="http://www.atuzfood.com/app/";
-var imagepath="http://www.atuzfood.com";
+var imagepath="http://www.atuzfood.com/";
 
 //var ajaxpath="http://www.safelearners.com/atoz/app/";
 //var imagepath="http://www.safelearners.com/atoz/";

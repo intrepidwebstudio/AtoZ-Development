@@ -1961,9 +1961,13 @@ function checkoutpayement()
 			crossDomain: true,
 			success: function(data)
 				{
+					
 			alert("Recieved data"+ JSON.stringify(data));
 			
-			loadurl('link');
+			var order_id=data.orderId; 
+			
+			
+			loadurl(TotalCartAmount,order_id);
 				},
 			error:function(data)
 			{
@@ -2024,11 +2028,11 @@ function loadliveorder()
      var iabRef = null;
 	    function iabLoadStart(event) {
 			 navigator.notification.activityStart("Please Wait", "Its loading....");
-    //     alert(event.type + ' - ' + event.url);
+    	//   alert(event.type + ' - ' + event.url);
         }
 	   function iabLoadStop(event) {
-		    navigator.notification.activityStop();
-  //       alert(event.type + ' - ' + event.url);
+			    navigator.notification.activityStop();
+	  		//  alert(event.type + ' - ' + event.url);
 		}
         function iabClose(event) {
 			
@@ -2043,19 +2047,14 @@ function loadliveorder()
         function iabShare(event){
         }
 		function iabLoadError(event){
-		
-		  navigator.notification.activityStop();
-//         alert(event.type + ' - ' + event.message);
-			
-			
+			navigator.notification.activityStop();
+		   //alert(event.type + ' - ' + event.message);
         }
 		
-		
-		
-        function loadurl(url_link){
+        function loadurl(amount,ord_id){
 			
 			//alert('urrl  = '+ url_link);
-			iabRef = window.open('http://www.atuzfood.com/payment/pay.php', '_blank','toolbarposition=top,location=no,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
+			iabRef = window.open('http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type=normal', '_blank','toolbarposition=top,location=yes,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
 			
 			$.support.cors = true;
 			iabRef.addEventListener('exit', iabClose);
@@ -2063,8 +2062,6 @@ function loadliveorder()
             iabRef.addEventListener('loadstart', iabLoadStart);
 			iabRef.addEventListener('loaderror', iabLoadError);
             iabRef.addEventListener('loadstop', iabLoadStop);
-
-			
 			
         }
 		
