@@ -22,9 +22,12 @@
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile.iscrollview-pull.css">	  
 
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/PushNotification.js"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="childbrowser.js"></script>
+<script type="text/javascript" src="js/atuznotification.js"></script>
+
 
 	<script> 
 	document.onreadystatechange = function(e)
@@ -1025,26 +1028,6 @@ function loadlocaldatabase(){
 		db.transaction(populateDB, errorCB, successCB);	
 	}
 </script> 
-<script>
-function onDeviceReady() {
-//	$.mobile.page.prototype.options.domCache = true;
-loadlocaldatabase();
-browser_setting();
-if (window.spinnerplugin) {
-        $.extend($.mobile, {
-            loading: function() {
-                // Show/hide spinner
-                var arg = arguments ? arguments[0] : '';
-                if (arg == 'show') spinnerplugin.show({'overlay':true});
-                else if (arg == 'hide') spinnerplugin.hide();           
-
-                // Compatibility with jQM 1.4
-                return { loader: function() { } }
-            }
-        }); 
-    }
-}
-</script>
 <script>
 jQuery(document).ready(function(){
     // This button will increment the value
