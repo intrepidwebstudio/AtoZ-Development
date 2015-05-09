@@ -2033,7 +2033,11 @@ function loadliveorder()
         }
 	   function iabLoadStop(event) {
 			    navigator.notification.activityStop();
-	  		//  alert(event.type + ' - ' + event.url);
+	  		  alert(event.type + ' - ' + event.url);
+			
+			if (event.url.match("payment/confirm")) {
+     		   			iabRef.close();
+    			}
 		}
         function iabClose(event) {
 			
