@@ -97,7 +97,7 @@
 					if ( e.regid.length > 0 )
 					{
 						$.support.cors = true;	
-						$.post(ajaxpath+'savedeviceid.php?regid='+e.regid);
+						$.post(ajaxpath+'savedeviceid.php?regid='+e.regid+'&user_id='+globaluserid);
 						
 						$("#app-status-ul").append('<li>REGISTERED 22222-> REGID:' + e.regid + "</li>");
 						// Your GCM push server needs to know the regID before it can push to this device
