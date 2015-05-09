@@ -2033,21 +2033,31 @@ function loadliveorder()
         }
 	   function iabLoadStop(event) {
 			    navigator.notification.activityStop();
-	  		  alert(event.type + ' - ' + event.url);
+	  		  	alert(event.type + ' - ' + event.url);
 			
-			if (event.url.match("payment/confirm")) {
+				if (event.url.match("payment/confirm")) {
      		   			iabRef.close();
     			}
 		}
         function iabClose(event) {
 			
 			 alert(event.type );
+			 
           iabRef.removeEventListener('loadstart', iabLoadStart);
           iabRef.removeEventListener('loadstop', iabLoadStop);
           iabRef.removeEventListener('exit', iabClose);
 		  iabRef.removeEventListener('loaderror', iabLoadError);
           iabRef.removeEventListener('share', iabClose);
 		  iabRef.close();
+		  
+		  
+ 			 if(event.type==exit)
+			 {
+				 alert('call ajax');
+				 
+				 }
+
+		  
         }
         function iabShare(event){
         }
