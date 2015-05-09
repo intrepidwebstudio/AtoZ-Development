@@ -97,27 +97,11 @@
                     case 'registered':
 					if ( e.regid.length > 0 )
 					{
+						$.support.cors = true;	
 						$.post(ajaxpath+'savedeviceid.php?regid='+e.regid);
 						
 						alert(e.regid);
-								$.support.cors = true;	
-		$.ajax({
-		url:ajaxpath+'savedeviceid.php?regid='+e.regid,
-		type:'POST',
-		contentType: "application/json",
-		async: true,
-		dataType: 'json',
-//		data:JSON.stringify(Obj),
-		crossDomain: true,
-		success: function(data)
-			{
-				alert(JSON.stringify(data));
-			},
-		error:function(data)
-		{
-			alert('error in path');
-			}	
-		});
+								
 						
 						
 						
