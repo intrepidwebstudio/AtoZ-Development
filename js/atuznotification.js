@@ -15,8 +15,8 @@
 					{
 						// call this to get a new token each time. don't call it to reuse existing token.
 						//pushNotification.unregister(successHandler, errorHandler);
-						e.preventDefault();
-						navigator.app.exitApp();
+					//	e.preventDefault();
+					//	navigator.app.exitApp();
 					}
 					else
 					{
@@ -26,7 +26,6 @@
 			
 				try 
 				{
-					alert('alert into push section'); 
                 	pushNotification = window.plugins.pushNotification;
 		      $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
                 	if (device.platform == 'android' || device.platform == 'Android' ||
@@ -99,12 +98,6 @@
 					{
 						$.support.cors = true;	
 						$.post(ajaxpath+'savedeviceid.php?regid='+e.regid);
-						
-						alert(e.regid);
-								
-						
-						
-						
 						
 						$("#app-status-ul").append('<li>REGISTERED 22222-> REGID:' + e.regid + "</li>");
 						// Your GCM push server needs to know the regID before it can push to this device
