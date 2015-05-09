@@ -3,22 +3,6 @@
             
             function onDeviceReady() {
 				
-				//	$.mobile.page.prototype.options.domCache = true;
-					loadlocaldatabase();
-					browser_setting();
-					if (window.spinnerplugin) {
-							$.extend($.mobile, {
-								loading: function() {
-									// Show/hide spinner
-									var arg = arguments ? arguments[0] : '';
-									if (arg == 'show') spinnerplugin.show({'overlay':true});
-									else if (arg == 'hide') spinnerplugin.hide();           
-					
-									// Compatibility with jQM 1.4
-									return { loader: function() { } }
-								}
-							}); 
-						}
 
 				
                 $("#app-status-ul").append('<li>deviceready event received</li>');
@@ -41,7 +25,8 @@
 				}, false);
 			
 				try 
-				{ 
+				{
+					alert('alert into push section'); 
                 	pushNotification = window.plugins.pushNotification;
 		      $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
                 	if (device.platform == 'android' || device.platform == 'Android' ||
@@ -57,6 +42,31 @@
 					txt+="Error description: " + err.message + "\n\n"; 
 					alert(txt); 
 				} 
+				
+				
+				
+				
+				
+				
+								//	$.mobile.page.prototype.options.domCache = true;
+					loadlocaldatabase();
+					browser_setting();
+					if (window.spinnerplugin) {
+							$.extend($.mobile, {
+								loading: function() {
+									// Show/hide spinner
+									var arg = arguments ? arguments[0] : '';
+									if (arg == 'show') spinnerplugin.show({'overlay':true});
+									else if (arg == 'hide') spinnerplugin.hide();           
+					
+									// Compatibility with jQM 1.4
+									return { loader: function() { } }
+								}
+							}); 
+						}
+
+				
+				
             }
             
             // handle APNS notifications for iOS
