@@ -1149,12 +1149,19 @@ function checkuserstatus()
 						$('#menu_date').html('');
 						$('#menu_date').append(menuDates);
 						
+					$.mobile.changePage('#placeorder',{ transition:'slide'  });	
+						
 					}
-				}
+				},
+			 error: function(data){
+				 
+				 	$.mobile.changePage('#placeorder',{ transition:'slide'  });
+				 
+				 }	
 			});
 			
 			
-			$.mobile.changePage('#placeorder',{ transition:'slide'  });
+			
 			
 		}else{
 			$.mobile.changePage('#registration',{ transition:'slide'  });
