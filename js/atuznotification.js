@@ -7,6 +7,7 @@
 				
                 $("#app-status-ul").append('<li>deviceready event received</li>');
                 
+				/*
 				document.addEventListener("backbutton", function(e)
 				{
                 	$("#app-status-ul").append('<li>backbutton event received</li>');
@@ -23,6 +24,9 @@
 						navigator.app.backHistory();
 					}
 				}, false);
+				*/
+				
+				
 			
 				try 
 				{
