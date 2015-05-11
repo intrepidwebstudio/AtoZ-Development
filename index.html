@@ -257,10 +257,15 @@ padding-right:5px !important;
         <div class="example-wrapper" data-iscroll>            
                     <div class="form">
                         <form class="fontCustom" id="CommentForm" method="post" action="#">
-                            <label>Date:</label>
+                            
+                       <select type="text" name="menu_date" id="menu_date" onclick="loadmenutime()"  class="form_input fontCustom" style="width:100%;" >
+                           	<option>Select Date</option>
+                        </select>
+                         
+<!--                            <label>Date:</label>
                             <input type="date" name="menu_date" id="menu_date" onchange="loadmenutime()" value="" class="form_input required" />
                             <label>Time:</label>
-                            
+-->                            
                             <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%;" >
                             <option>Select delivery time</option>
                             </select>
@@ -1116,7 +1121,41 @@ function checkuserstatus()
 {
 	if(globaluserid!='' && globaluserid!=0 && globaluserid!=null )
 		{
+			$.support.cors = true;	
+			$.ajax({
+			url:ajaxpath+'loadmenudates.php?user_id='+globaluserid ,
+			type:'POST',
+			contentType: "application/json",
+			async: true,
+			dataType: 'json',
+			crossDomain: true,
+			success: function(data)
+				{
+					var menuStatus=data.status;				
+					
+					if(menuStatus.status=='100')
+					{
+						
+						var menudateObj=data.response;	
+						
+						var menuDates='';
+									
+								menuDates+='<option value="" >Select Date</option>';
+									
+						$.each(menudateObj, function(index, element) {
+								menuDates+='<option value="'+element.menudate+'" >'+element.menudate+'</option>';
+							});
+							
+						$('#menu_date').html('');
+						$('#menu_date').append(menuDates);
+						
+					}
+				}
+			});
+			
+			
 			$.mobile.changePage('#placeorder',{ transition:'slide'  });
+			
 		}else{
 			$.mobile.changePage('#registration',{ transition:'slide'  });
 			}
@@ -2041,7 +2080,7 @@ function loadliveorder()
 		  
  			 if(event.type=='exit')
 			 {
-				 alert('call ajax');
+				confirmOrder();
 				 
 				 }
 		    }
@@ -2083,7 +2122,36 @@ function browser_setting()
 
 
 	
+function confirmOrder()
+{
+  $.support.cors = true;	
+  $.ajax({
+		url:ajaxpath+'checkpaymentstatus.php?user_id='+globaluserid+'&order_id='+OrderID,
+		type:'POST',
+		contentType: "application/json",
+		async: true,
+		dataType: 'json',
+//		data:JSON.stringify(Obj),
+		crossDomain: true,
+		success: function(data)
+			{
+			  	alert(JSON.stringify(data));
+				var OrderListObj = data.response;
+				var statusObj = data.status;
+				var trackorderStatus='';
+				if(statusObj.status=='100')
+				{
+				  
+				  	
+				   }
+			}
+
+	  
+	  
+			  }); 	
 	
+	
+	  }	
 	
 </script>
 
