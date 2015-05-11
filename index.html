@@ -1135,20 +1135,15 @@ function checkuserstatus()
 					
 					if(menuStatus.status=='100')
 					{
-						
 						var menudateObj=data.response;	
-						
 						var menuDates='';
-									
 								menuDates+='<option value="" >Select Date</option>';
-									
 						$.each(menudateObj, function(index, element) {
 								menuDates+='<option value="'+element.menudate+'" >'+element.menudate+'</option>';
 							});
 							
 						$('#menu_date').html('');
 						$('#menu_date').append(menuDates);
-						
 					$.mobile.changePage('#placeorder',{ transition:'slide'  });	
 						
 					}
