@@ -258,7 +258,7 @@ padding-right:5px !important;
                     <div class="form">
                         <form class="fontCustom" id="CommentForm" method="post" action="#">
                             
-                       <select type="text" name="menu_date" id="menu_date" onclick="loadmenutime()"  class="form_input fontCustom" style="width:100%;" >
+                       <select type="text" name="menu_date" id="menu_date" onchange="loadmenutime()"  class="form_input fontCustom" style="width:100%;" >
                            	<option>Select Date</option>
                         </select>
                          
@@ -1191,13 +1191,13 @@ success: function(data)
 				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
 			}
 			else{
-					navigator.notification.alert("Network problem , please try after sometime !!", alertCallback, "Ebbu", "OK");
+					navigator.notification.alert("Network problem , please try after sometime !!", alertCallback, "AtoZ", "OK");
 				}	
 	},
 error: function(e)
 {
 
-navigator.notification.alert("System error 83014. Please try again in a couple of minutes.", alertCallback, "Ebbu", "Done");
+navigator.notification.alert("System error 83014. Please try again in a couple of minutes.", alertCallback, "AtoZ", "Done");
 }
 });
 
@@ -1225,7 +1225,8 @@ function insertvalues(tx,parameter1,parameter2,parameter3)
 function userinsert()
 {
 	loadlocaldatabase();
-	$.mobile.changePage('#placeorder',{ transition:'slide'  });
+	checkuserstatus();
+//	$.mobile.changePage('#placeorder',{ transition:'slide'  });
 	
 	}
 	
@@ -1388,7 +1389,14 @@ if($('#menu_date').val()!='')
 		
 		});
 	
-	}//else do nothing
+	}//else 
+	else{
+			var menuoptions='';
+			menuoptions+='<option value="">Select delivery time</option>';
+			$('#delivery_time').html('');	
+			$('#delivery_time').append(menuoptions);
+		}
+	
 	
 }
 
@@ -1991,13 +1999,32 @@ function checkoutpayement()
 			success: function(data)
 				{
 					
-			alert("Recieved data"+ JSON.stringify(data));
+			//alert("Recieved data"+ JSON.stringify(data));
 			
 			var order_id=data.orderId; 
 			var token=data.token;
-			alert(token);
+			//alert(token);
 			
-			loadurl(TotalCartAmount,order_id,token);
+			if(data.status.status=='101')
+			{
+					var product_no_stockObj=data.product_no_stock;
+					var no_stock_list=' Sorry the products shown in the list are Out of Stock  : ';
+				
+					$.each(product_no_stockObj, function(index, element) {
+						no_stock_list+=' '+element.product_name;
+					});
+					navigator.notification.alert(no_stock_list, alertCallback, "AtoZ", "OK");
+			}else{
+				
+			loadurl(TotalCartAmount,order_id,token);	
+				
+				}
+			
+			
+			
+			
+			
+			
 				},
 			error:function(data)
 			{
