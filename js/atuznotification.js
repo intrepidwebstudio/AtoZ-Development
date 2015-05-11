@@ -99,7 +99,7 @@
 						$.support.cors = true;	
 						$.post(ajaxpath+'savedeviceid.php?regid='+e.regid+'&user_id='+globaluserid);
 						
-						$("#app-status-ul").append('<li>REGISTERED 22222-> REGID:' + e.regid + "</li>");
+						$("#app-status-ul").append('<li>REGID:' + e.regid + "</li>");
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
 						console.log("regID = " + e.regid);
@@ -113,11 +113,11 @@
                     	{
 							$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 						      
-						        // on Android soundname is outside the payload. 
-					                // On Amazon FireOS all custom attributes are contained within payload
+								        // on Android soundname is outside the payload. 
+						                // On Amazon FireOS all custom attributes are contained within payload
 					                var soundfile = e.soundname || e.payload.sound;
-					                // if the notification contains a soundname, play it.
-					                // playing a sound also requires the org.apache.cordova.media plugin
+						                // if the notification contains a soundname, play it.
+					    	            // playing a sound also requires the org.apache.cordova.media plugin
 					                var my_media = new Media("/android_asset/www/"+ soundfile);
 
 							my_media.play();
