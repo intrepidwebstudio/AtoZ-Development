@@ -2094,17 +2094,19 @@ function loadliveorder()
 				if (event.url.match("payment/confirm")) {
      		   			iabRef.close();
 						
-						$.ajax({
-							url:''
-							
-							
-							});
-						
     			}
 		}
         function iabClose(event) {
 			
 			 alert(event.type );
+			 
+ 			 if(event.type=='exit')
+			 {
+				 alert('vvv');
+				confirmOrder();
+				 
+				 }
+
 			 
           iabRef.removeEventListener('loadstart', iabLoadStart);
           iabRef.removeEventListener('loadstop', iabLoadStop);
@@ -2113,12 +2115,7 @@ function loadliveorder()
           iabRef.removeEventListener('share', iabClose);
 		  iabRef.close();
 		  
-		  
- 			 if(event.type=='exit')
-			 {
-				confirmOrder();
-				 
-				 }
+		   alert(event.type );
 		    }
         function iabShare(event){
         }
