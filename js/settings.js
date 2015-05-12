@@ -7,6 +7,8 @@ var imagepath="http://www.atuzfood.com/";
 var	globalusername='';
 var	globaluserid='';
 var	globaluserphone='';
+
+var globalorderno='';
 var filtermenu_array=[];
 var cart_array=[];
 

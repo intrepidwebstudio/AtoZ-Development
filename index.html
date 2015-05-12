@@ -2126,6 +2126,8 @@ function loadliveorder()
 		
         function loadurl(amount,ord_id,token){
 			var orderType='normal';
+			globalorderno=ord_id;
+			
 			alert('urrl  = '+' '+'http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token);
 			iabRef = window.open('http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token, '_blank','toolbarposition=top,location=yes,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
 			
@@ -2161,7 +2163,7 @@ function confirmOrder()
 	
   $.support.cors = true;	
   $.ajax({
-		url:ajaxpath+'checkpaymentstatus.php?user_id='+globaluserid+'&order_id='+OrderID,
+		url:ajaxpath+'checkpaymentstatus.php?user_id='+globaluserid+'&order_id='+globalorderno,
 		type:'POST',
 		contentType: "application/json",
 		async: true,
