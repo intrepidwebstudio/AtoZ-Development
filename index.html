@@ -2011,12 +2011,12 @@ function checkoutpayement()
 					var no_stock_list=' Sorry the products shown in the list are Out of Stock  : ';
 				
 					$.each(product_no_stockObj, function(index, element) {
-						no_stock_list+=' '+element.product_name;
+						no_stock_list+='  /  '+element.product_name;
 					});
 					navigator.notification.alert(no_stock_list, alertCallback, "AtoZ", "OK");
 			}else{
 				
-			loadurl(TotalCartAmount,order_id,token);	
+					loadurl(TotalCartAmount,order_id,token);	
 				
 				}
 			
@@ -2093,6 +2093,13 @@ function loadliveorder()
 			
 				if (event.url.match("payment/confirm")) {
      		   			iabRef.close();
+						
+						$.ajax({
+							url:''
+							
+							
+							});
+						
     			}
 		}
         function iabClose(event) {
@@ -2153,6 +2160,8 @@ function browser_setting()
 	
 function confirmOrder()
 {
+	alert('verifying backend for payment suceess for order number '+ globalorderno );
+	
   $.support.cors = true;	
   $.ajax({
 		url:ajaxpath+'checkpaymentstatus.php?user_id='+globaluserid+'&order_id='+OrderID,
@@ -2174,13 +2183,9 @@ function confirmOrder()
 				  	
 				   }
 			}
-
 	  
-	  
-			  }); 	
-	
-	
-	  }	
+	  }); 	
+ }	
 	
 </script>
 
