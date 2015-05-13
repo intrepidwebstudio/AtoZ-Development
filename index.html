@@ -290,7 +290,7 @@ padding-right:5px !important;
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
-                		<a href="#"  data-rel="back"  >												    						<img src="images/icons/menu.png" alt="" title="" />
+                		<a href="#"  href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
@@ -1523,6 +1523,9 @@ function loadmenulist()
 	
 //alert(ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_date_id='+$('#delivery_time').val());
 
+cart_array=[];
+final_cartjsonObj=[];
+
 	$.support.cors = true;	
 	
 	MenuTypeId=$('#delivery_time').val();
@@ -1822,7 +1825,13 @@ $.each(globalmenuObj, function(index, element) {
 	$(final_cartjsonObj).each(function() {
     if (this.product_id == element.product_id) {
 	var TotalQuantity =	this.product_qty;	
-	var	productTotal = (TotalQuantity) * (element.product_price);
+	
+	if(element.discount_percentage!=0)
+	{
+		var	productTotal = (TotalQuantity) * (element.discount_price);
+	}else{
+		var	productTotal = (TotalQuantity) * (element.product_price);
+		}
 	
 	
 		
@@ -1845,6 +1854,7 @@ cartlist+='Rs &emsp;<span  class="strikethrough amountfont">'+element.product_pr
 cartlist+='Rs &emsp;<span class=" amountfont">'+element.product_price+'</span>';	
 	}
 cartlist+='</span><span style="float:right; width:30% !important; line-height:25px;" >';
+
 cartlist+='<input class="productquantity" onblur=resetqty(\'productcartqty'+element.product_id+'\',\''+element.product_id+'\')  id="productcartqty'+element.product_id+'"  type="number" placeholder="Qty"  value="'+TotalQuantity+'"  /><span class="amountfont">Rs <span id="productTotal'+element.product_id+'" >'+productTotal+'</span></span><br />';
 cartlist+='<span style=" position:relative; right:40%; top:8px; float:right;background-color:#F00;padding:4px; border:1px solid #999; border-radius:50% ;color:#FFF" onclick=removeProduct(\''+element.product_id+'\')><img src="images/delete.png" style="max-width:18px; vertical-align:middle" />';
 cartlist+='</span></span></p></a></li>';
