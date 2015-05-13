@@ -2289,28 +2289,29 @@ function confirmOrder()
 		success: function(data)
 			{
 			  	alert(JSON.stringify(data));
+				
 				var OrderListObj = data.response;
 				var statusObj = data.status;
 				var trackorderStatus='';
 				if(statusObj.status=='100')
 				{
 					
-					$('#success_orderid').val(OrderListObj.order_no);
-					$('#success_date').val(OrderListObj.delivery_menu_date);
-					$('#success_deliverytime').val(OrderListObj.delivery_time);
-					$('#success_amount').val(OrderListObj.order_amount);
-					$('#success_orderdate').val(OrderListObj.order_date);
+					$('#success_orderid').html(OrderListObj.order_no);
+					$('#success_date').html(OrderListObj.delivery_menu_date);
+					$('#success_deliverytime').html(OrderListObj.delivery_time);
+					$('#success_amount').html(OrderListObj.order_amount);
+					$('#success_orderdate').html(OrderListObj.order_date);
 					
 					$.mobile.changePage('#successpage',{ transition:'slide' });
 				//  you order has been placed success fully , you can now track your food in track order menu
 				  	
 				   }else{
-					   
-   					$('#failure_orderid').val(OrderListObj.order_no);
-					$('#failure_date').val(OrderListObj.delivery_menu_date);
-					$('#failure_deliverytime').val(OrderListObj.delivery_time);
-					$('#failure_amount').val(OrderListObj.order_amount);
-					$('#failure_orderdate').val(OrderListObj.order_date);
+					
+   					$('#failure_orderid').html(OrderListObj.order_no);
+					$('#failure_date').html(OrderListObj.delivery_menu_date);
+					$('#failure_deliverytime').html(OrderListObj.delivery_time);
+					$('#failure_amount').html(OrderListObj.order_amount);
+					$('#failure_orderdate').html(OrderListObj.order_date);
 
 					   $.mobile.changePage('#failurepage',{ transition:'slide' });
 					   //failure page;
