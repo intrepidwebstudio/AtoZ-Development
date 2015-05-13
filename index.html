@@ -635,7 +635,7 @@ padding-right:5px !important;
            <div>
                     <center>
                     <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
-                    <span style="position:relative; top:30% !important"><center> Bill Amount : Rs 1000.00  /-</center></span>
+                    <div style="position:relative; top:30% !important"><center> Bill Amount : Rs 1000.00  /-</center></div>
                     </div>
               		</center>
                     </div>
@@ -1884,19 +1884,20 @@ cartlist+='</span></span></p></a></li>';
 	
 function removeProduct(pid)
 { 
-/*   $.each(final_cartjsonObj, function(index, result) {
-	   
-	   alert("result[product_id] ="+ result[product_id] );
-	   
-      if(result[product_id] == pid) {
-          //Remove from array
-		  alert(result[product_id]);
-          final_cartjsonObj.splice(index, 1);
-      }    
-   });
-   */
+
+		$('#productselect'+pid).removeClass("selectedproduct");
+		$('#productselectdescription'+pid).removeClass("selectedproduct");
+		$('#productselect'+pid).addClass("unselectedproduct");
+		$('#productselectdescription'+pid).addClass("unselectedproduct");
+		$('#productqty'+pid).prop("disabled", true);
+		$('#productqty'+pid).val('');
+		$('#productdescriptionqty'+pid).prop("disabled", true);
+		$('#productdescriptionqty'+pid).val('');
+
+		$('#addcarttext'+pid).html('Add to Cart');
+		cart_array.pop(pid);
    
-    addtocart(pid);
+   // addtocart(pid);
 	gotocart();
 }
 	
