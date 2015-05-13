@@ -1003,7 +1003,7 @@ Last Edited on 2015-04-21
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
-                		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
+                		<a href="#" onclick="resetcart()"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
@@ -1813,7 +1813,13 @@ function addtocart(pid)
 		$('#productdescriptionqty'+pid).val('');
 
 		$('#addcarttext'+pid).html('Add to Cart');
-		cart_array.pop(pid);
+		
+		
+				var index = cart_array.indexOf(pid);
+				if (index > -1) {
+						cart_array.splice(index, 1);
+					}
+	//	cart_array.pop(pid);
 		
 		}
 	
@@ -2326,7 +2332,7 @@ function browser_setting()
 function confirmOrder()
 {
 //	alert('verifying backend for payment suceess for order number '+ globalorderno );
-	
+	navigator.notification.activityStart("Please Wait", "Its loading....");
   $.support.cors = true;	
   $.ajax({
 		url:ajaxpath+'checkpaymentstatus.php?user_id='+globaluserid+'&order_id='+globalorderno,
@@ -2354,6 +2360,7 @@ function confirmOrder()
 					$('#success_orderdate').html(OrderListObj.order_date);
 					
 					$.mobile.changePage('#successpage',{ transition:'slide' });
+					navigator.notification.activityStop();
 				//  you order has been placed success fully , you can now track your food in track order menu
 				  	
 				   }else{
@@ -2367,6 +2374,7 @@ function confirmOrder()
 
 					   $.mobile.changePage('#failurepage',{ transition:'slide' });
 					   //failure page;
+					   navigator.notification.activityStop();
 					   }
 			},
 		error:function(data){
@@ -2377,6 +2385,13 @@ function confirmOrder()
 	  }); 	
  }	
 	
+	
+	function resetcart()
+	{
+		cart_array=[];
+		final_cartjsonObj=[];
+		
+	}
 </script>
 
 
