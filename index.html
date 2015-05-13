@@ -2295,6 +2295,7 @@ function confirmOrder()
 				var trackorderStatus='';
 				if(statusObj.status=='100')
 				{
+					//alert('s');
 					
 					$('#success_orderid').html(OrderListObj.order_no);
 					$('#success_date').html(OrderListObj.delivery_menu_date);
@@ -2307,6 +2308,7 @@ function confirmOrder()
 				  	
 				   }else{
 					
+				//	alert('s');   
    					$('#failure_orderid').html(OrderListObj.order_no);
 					$('#failure_date').html(OrderListObj.delivery_menu_date);
 					$('#failure_deliverytime').html(OrderListObj.delivery_time);
