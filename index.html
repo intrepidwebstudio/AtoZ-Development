@@ -2013,13 +2013,13 @@ function changepagetrack(OrderID){
 		crossDomain: true,
 		success: function(data)
 			{
-			  	alert(JSON.stringify(data));
+			  	//alert(JSON.stringify(data));
 				var OrderListObj = data.response;
 				var statusObj = data.status;
 				var trackorderStatus='';
 				if(statusObj.status=='100')
 				{
-					alert('order_id = '+ OrderListObj.order_id );
+					//alert('order_id = '+ OrderListObj.order_id );
 					
 					var orderid = OrderListObj.order_id;
 					var id = OrderListObj.id;
@@ -2050,7 +2050,7 @@ function changepagetrack(OrderID){
 						}
 						
 						
-						alert(StatusClassArray);
+						//alert(StatusClassArray);
 					
 trackorderStatus+='<br /><span onclick="vieworderdetails()"><center><div style="height:30px !important; width:70%"   >';
 trackorderStatus+='<center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Id : '+orderid+'</span></center>';
@@ -2069,7 +2069,7 @@ trackorderStatus+='<div id="status2" class="'+StatusClassArray[1]+'" style="posi
 trackorderStatus+='<div id="status3" class="'+StatusClassArray[2]+'" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>';
 trackorderStatus+='<div id="status4" class="'+StatusClassArray[3]+'" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div></div>';
 
-	alert(trackorderStatus);
+//	alert(trackorderStatus);
 
 				$('#trackorderstatusview').html('');
 				$('#trackorderstatusview').html(trackorderStatus);
@@ -2101,7 +2101,7 @@ function checkoutpayement()
 			"CartDetails": final_cartjsonObj
 	 				};	
 	
-	alert(JSON.stringify(Obj));
+	//alert(JSON.stringify(Obj));
 	
 			$.support.cors = true;	
 			$.ajax({
@@ -2205,7 +2205,7 @@ function loadliveorder()
         }
 	   function iabLoadStop(event) {
 			    navigator.notification.activityStop();
-	  		  	alert(event.type + ' - ' + event.url);
+	  	//	  	alert(event.type + ' - ' + event.url);
 			
 				if (event.url.match("payment/confirm")) {
      		   			iabRef.close();
@@ -2214,11 +2214,11 @@ function loadliveorder()
 		}
         function iabClose(event) {
 			
-			 alert(event.type );
+			// alert(event.type );
 			 
  			 if(event.type=='exit')
 			 {
-				 alert('vvv');
+			//	 alert('vvv');
 				confirmOrder();
 				 
 				 }
@@ -2231,7 +2231,7 @@ function loadliveorder()
           iabRef.removeEventListener('share', iabClose);
 		  iabRef.close();
 		  
-		   alert(event.type );
+		 //  alert(event.type );
 		    }
         function iabShare(event){
         }
@@ -2244,7 +2244,7 @@ function loadliveorder()
 			var orderType='normal';
 			globalorderno=ord_id;
 			
-			alert('urrl  = '+' '+'http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token);
+		//	alert('urrl  = '+' '+'http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token);
 			iabRef = window.open('http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token, '_blank','toolbarposition=top,location=yes,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
 			
 			$.support.cors = true;
@@ -2275,7 +2275,7 @@ function browser_setting()
 	
 function confirmOrder()
 {
-	alert('verifying backend for payment suceess for order number '+ globalorderno );
+//	alert('verifying backend for payment suceess for order number '+ globalorderno );
 	
   $.support.cors = true;	
   $.ajax({
@@ -2288,7 +2288,7 @@ function confirmOrder()
 		crossDomain: true,
 		success: function(data)
 			{
-			  	alert(JSON.stringify(data));
+			  //	alert(JSON.stringify(data));
 				
 				var OrderListObj = data.response;
 				var statusObj = data.status;
@@ -2320,7 +2320,7 @@ function confirmOrder()
 					   }
 			},
 		error:function(data){
-				alert('Error');
+			//	alert('Error');
 			}	
 			
 	  
