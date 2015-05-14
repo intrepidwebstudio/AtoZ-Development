@@ -101,8 +101,8 @@
 					if ( e.regid.length > 0 )
 					{
 						$.support.cors = true;	
-						alert("id = "+globaluserid);
-						alert(ajaxpath+'savedeviceid.php?regid='+e.regid+'&user_id='+globaluserid);
+					//	alert("id = "+globaluserid);
+					//	alert(ajaxpath+'savedeviceid.php?regid='+e.regid+'&user_id='+globaluserid);
 						$.post(ajaxpath+'savedeviceid.php?regid='+e.regid+'&user_id='+globaluserid);
 						
 						$("#app-status-ul").append('<li>REGID:' + e.regid + "</li>");
