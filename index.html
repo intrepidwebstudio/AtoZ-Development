@@ -198,7 +198,7 @@ padding-right:5px !important;
 </head>
 <body>
 
-<div data-role="page" id="home"  data-title="Atoz Restaurent" class="sliderbg_menu" >
+<div data-role="page" id="home"  data-title="Atoz Restaurent" class="" >
     <!--content--->
     <div data-role="content">
 <!--    	<div  >
@@ -207,7 +207,7 @@ padding-right:5px !important;
             </ul>
         </div>
 -->    
-        <div class="logo"><a href="#"  style="color:#BF6000">AtuZ<span> Have your meal in few clicks </span></a></div>
+        <div class="logo" style="margin-top:-20px"><a href="#"  style="color:#BF6000"><img src="res/icon/android/512.png" style="width:40% !important; max-width:225px;" /><span style="margin-top:-35px"> Have your meal in few clicks </span></a></div>
         <div class="menu">
         <ul class="fontCustom">
                 <li><a href="#" onclick="checkuserstatus()"><img src="colors/restaurant/images/Place order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Place Order</span></a></li>
@@ -330,7 +330,7 @@ padding-right:5px !important;
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
-                		<a href="#"  href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                		<a  href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
@@ -1802,7 +1802,7 @@ function addtocart(pid)
 		cart_array.push(pid);
 		
 		}else{
-//			alert('de-selected');
+			alert('de-selected' + pid);
 		$('#productselect'+pid).removeClass("selectedproduct");
 		$('#productselectdescription'+pid).removeClass("selectedproduct");
 		$('#productselect'+pid).addClass("unselectedproduct");
@@ -1815,10 +1815,6 @@ function addtocart(pid)
 		$('#addcarttext'+pid).html('Add to Cart');
 		
 		
-				var index = cart_array.indexOf(pid);
-				if (index > -1) {
-						cart_array.splice(index, 1);
-					}
 	//	cart_array.pop(pid);
 		
 		}
@@ -1941,7 +1937,14 @@ function removeProduct(pid)
 		$('#productdescriptionqty'+pid).val('');
 
 		$('#addcarttext'+pid).html('Add to Cart');
-		cart_array.pop(pid);
+		
+						var index = cart_array.indexOf(pid);
+				if (index > -1) {
+						cart_array.splice(index, 1);
+					}
+
+		
+//		cart_array.pop(pid);
    
    // addtocart(pid);
 	gotocart();
