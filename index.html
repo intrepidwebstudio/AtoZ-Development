@@ -1938,7 +1938,7 @@ function removeProduct(pid)
 
 		$('#addcarttext'+pid).html('Add to Cart');
 		
-						var index = cart_array.indexOf(pid);
+			var index = cart_array.indexOf(pid);
 				if (index > -1) {
 						cart_array.splice(index, 1);
 					}
@@ -2357,10 +2357,10 @@ function confirmOrder()
 					//alert('s');
 					
 					$('#success_orderid').html(OrderListObj.order_no);
-					$('#success_date').html(OrderListObj.delivery_menu_date);
+					$('#success_orderdate').html(OrderListObj.delivery_menu_date);
 					$('#success_deliverytime').html(OrderListObj.delivery_time);
 					$('#success_amount').html(OrderListObj.order_amount);
-					$('#success_orderdate').html(OrderListObj.order_date);
+					$('#success_date').html(OrderListObj.order_date);
 					
 					$.mobile.changePage('#successpage',{ transition:'slide' });
 					navigator.notification.activityStop();
@@ -2370,10 +2370,10 @@ function confirmOrder()
 					
 				//	alert('s');   
    					$('#failure_orderid').html(OrderListObj.order_no);
-					$('#failure_date').html(OrderListObj.delivery_menu_date);
+					$('#failure_orderdate').html(OrderListObj.delivery_menu_date);
 					$('#failure_deliverytime').html(OrderListObj.delivery_time);
 					$('#failure_amount').html(OrderListObj.order_amount);
-					$('#failure_orderdate').html(OrderListObj.order_date);
+					$('#failure_date').html(OrderListObj.order_date);
 
 					   $.mobile.changePage('#failurepage',{ transition:'slide' });
 					   //failure page;
