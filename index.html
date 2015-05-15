@@ -2747,10 +2747,14 @@ function checkbulkorder(){
 
 var bulkcode= $('#bulkcode').val();
 
+alert(bulkcode);
+
 if(bulkcode!='' && bulkcode!=null )
 {
+	alert(ajaxpath+'bulkorderlist?bulkcode='+bulkcode);	
 		$.support.cors = true;	
 		$.ajax({
+		
 		url:ajaxpath+'bulkorderlist?bulkcode='+bulkcode,
 		type:'POST',
 		contentType: "application/json",
@@ -2760,13 +2764,13 @@ if(bulkcode!='' && bulkcode!=null )
 		crossDomain: true,
 		success: function(data)
 			{
-			   	//alert(JSON.stringify(data));
+				alert(JSON.stringify(data));
 				var OrderListObj = data.response;
 				var statusObj = data.status;
 			
 				if(statusObj.status=='100')
 				{
-				    	
+				    	alert('ok');
 						
 				var bulkorderDetail='';
 				var OrderObj=data.response;
@@ -2841,7 +2845,10 @@ $.each(OrderObj, function(index, element) {
 			}
 		});
 	
-	}	
+	}else{
+		
+		alert('errorrrrr');
+		}	
 	
 }	
 	
