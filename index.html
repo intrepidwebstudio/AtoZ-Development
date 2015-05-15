@@ -753,7 +753,10 @@ padding-right:5px !important;
         </div>
         <!-- /header -->
       <div data-role="content"  class="ui-content menu_content">
- <div class="example-wrapper" data-iscroll id="orderhistroydetail">                           
+ <div class="example-wrapper" data-iscroll >                           
+ 
+ <span id="orderhistroydetail">
+ 
 <br />
 <center>
     <div style="height:30px !important; width:70%"   >
@@ -790,8 +793,9 @@ padding-right:5px !important;
 </center>
 </div>            
 <br />
+</span>
 
-			<ul data-role="listview" data-icon="false"  id="menulistitems" >
+			<ul data-role="listview" data-icon="false"  id="orderdetailsitems" >
             	<li class="showAll northindian "><a href="">
 <p class="customLineheight" style="width:100% !important; ">
 <span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
@@ -1849,7 +1853,7 @@ function addtocart(pid)
 			if (index > -1) {
 					cart_array.splice(index, 1);
 				}
-
+				
 	//	cart_array.pop(pid);
 		
 		}
@@ -2151,10 +2155,13 @@ $.each(OrderObj, function(index, element) {
 	});
    }
    
+   $('#orderhistroydetail').html('');
+   $('#orderhistroydetail').html(orderhistroyDetail);
    
-   
-   
-   
+	$('#orderdetailsitems').empty().append(listitems);
+	$('#orderdetailsitems').trigger("create");
+	$('#orderdetailsitems').listview().listview('refresh');
+
     $.mobile.changePage('#orderhistroyview',{ transition:'slide' });
    
  },
@@ -2507,7 +2514,9 @@ function confirmOrder()
 	
 function loadorderhistroy()
 {
-//	alert('aasassa=='+globaluserid);
+alert('aasassa=='+globaluserid);
+
+
 		$.support.cors = true;	
 		$.ajax({
 		url:ajaxpath+'loadorderhistroy.php?user_id='+globaluserid,
@@ -2524,6 +2533,7 @@ function loadorderhistroy()
 				var OrderListObj = data.response;
 				var statusObj = data.status;
 				var orderhistroyList='';
+				
 				if(statusObj.status=='100')
 				{
 				$.each(OrderListObj, function(index, element) {
