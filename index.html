@@ -2145,6 +2145,13 @@ $.each(OrderObj, function(index, element) {
 		listitems+='</span></p></a></li>';
 	});
    }
+   
+   
+   
+   
+   
+    $.mobile.changePage('#orderhistroyview',{ transition:'slide' });
+   
  },
 		error:function(data)
 		{
@@ -2153,7 +2160,7 @@ $.each(OrderObj, function(index, element) {
 	});
 		
 
-	 $.mobile.changePage('#orderhistroyview',{ transition:'slide' });
+	
 	
 	}	
 	
@@ -2495,7 +2502,6 @@ function confirmOrder()
 	
 function loadorderhistroy()
 {
-
 //	alert('aasassa=='+globaluserid);
 		$.support.cors = true;	
 		$.ajax({
@@ -2518,6 +2524,7 @@ function loadorderhistroy()
 				$.each(OrderListObj, function(index, element) {
 					 orderhistroyList+='<li onclick="changepagehistroy(\''+element.order_id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
 				});
+				alert(orderhistroyList);
 				
 				$('#orderhistroylist').empty().append(orderhistroyList);
 				$('#orderhistroylist').trigger("create");
