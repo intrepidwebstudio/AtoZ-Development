@@ -2146,11 +2146,11 @@ $.each(OrderObj, function(index, element) {
 		listitems+='<span class=" amountfont">'+element.product_price+'</span></span>';
 		}
 		listitems+='</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" >';
-		listitems+='<img src="'+imagepath+element.product_image+'" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>';
+		listitems+='<img src="'+imagepath+element.product_image+'" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input type="text" style="width:30px" value="'+element.order_quantity+'" disabled="disabled" /></span></span>';
 		listitems+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
 		
 		if(element.food_type=='veg'){ listitems+='<img src="images/veg.jpg" style="max-width:30px;top:10px;" />'; }
-		else{  listitems+='<img src="images/veg.jpg" style="max-width:30px;top:10px;" />'; }
+		else{  listitems+='<img src="images/nonveg.jpg" style="max-width:30px;top:10px;" />'; }
 		listitems+='</span></p></a></li>';
 	});
    }
