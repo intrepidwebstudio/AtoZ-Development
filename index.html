@@ -193,6 +193,10 @@ padding-right:5px !important;
     transition-duration: .25s;
 }
 
+.arial{
+font-family:Arial, Helvetica, sans-serif !important;
+}
+
 
 						</style>
 </head>
@@ -1072,7 +1076,7 @@ Last Edited on 2015-04-21
              </center></p>
              
                                  <center>
-                    <div style="width:40%; background-color:#8a150e; height:40px; color:#FFF; font-size:16px"  >
+                    <div style="width:40%; background-color:#8a150e; height:40px; color:#FFF; font-size:16px" id="successtrack" >
                     <div style="position:relative; top:30% !important"><center> Track &nbsp;Order</center></div>
                     </div>
               		</center>
@@ -1121,20 +1125,180 @@ Last Edited on 2015-04-21
                     ORDER AMOUNT : Rs<span class="privacyLight" id="failure_amount" >2000</span>/-
                     <br /><br />
                     ORDER DATE-TIME: <span class="privacyLight" id="failure_date" >24-04-2015 22:45 hrs</span> 
-                    
-
             <br />
             <br />
             Please Check the order history page for more details. And for further info contact  info@atuzfood.com
             <br /> <br /> 
-            
              Thank You for the opputunity to serve you . Keep ordering. 
              </center></p>
-             
-             
-            
     	</div>
     </div><!-- /content -->
+</div>
+
+
+<div data-role="page" id="bulkorder" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Bulk Order</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+	    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll style="padding:10px !important;" >            
+        
+        
+        		
+              <div class="arial">
+                    <h4>Step 1:</h4>
+              		 For bulk orders please call  <span><a class="arial" style="font-size:15px !important; font-weight:bold" href="tel:+919566177603">9566177603</a></span>  and place your order through phone. 
+              </div> 
+
+              <div class="arial">
+                    <h4>Step 2:</h4>
+              		After your order is created , you will recieve a code for the order placed , paste the code into the box below and click next . 
+              </div> 
+              
+              <div class="arial">
+                    <h4>Step 3:</h4>
+                   The order you placed will be displayed in the next page and click checkout to make payment . 
+              </div> 
+                    
+			<h4 class="arial">Enter the bulk order code :</h4>
+                <center>      
+                        <div style="width:80% !important" >
+                            <input class="arial" style="letter-spacing:3px;" type="text" name="bulkcode" id="bulkcode" placeholder="Bulk  order  code"  />
+                        </div>
+               </center>
+                <center>      
+                        <div style="width:80% !important" >
+					 			<button type="button" onclick="checkbulkorder()" name="submit" class="form_submit green green_borderbottom" >Next</button>
+                        </div>
+               </center>
+              
+		        
+            
+           		 
+    	</div>
+    </div><!-- /content -->
+</div>
+
+<div data-role="page" id="bulkorderconfirm" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order Summary</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"  class="ui-content menu_content">
+ <div class="example-wrapper" data-iscroll >                           
+ 
+ <span id="bulkorderdetail">
+ 
+<br />
+<center>
+    <div style="height:30px !important; width:70%"   >
+    <center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Id : OD234522BX</span></center> 
+    </div>
+    <div style="height:30px !important; width:70%"   >
+    <center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Date : 17-04-2015 </span></center> 
+    </div>
+    <div style="height:30px !important; width:70%"   >
+    <center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder">Delivery Time : 17-04-2015 </span></center> 
+    </div>
+    <div style="height:30px !important; width:70%"   >
+    <center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder">Order booking time : 17-04-2015</span></center> 
+    </div>
+    <div style="height:30px !important; width:70%"   >
+    <center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder">Payment : success</span></center> 
+    </div>
+</center>
+<div>
+<center>
+    <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
+        <div style="position:relative; top:30% !important"><center> Bill Amount : Rs 1000.00 /-</center></div>
+    </div>
+<br />
+    <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
+        <div style="position:relative; top:30% !important"><center>Track Order</center></div>
+    </div>
+
+<br />
+
+    <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
+        <div style="position:relative; top:30% !important"><center>Reorder this menu</center></div>
+    </div>
+</center>
+</div>            
+<br />
+</span>
+
+			<ul data-role="listview" data-icon="false"  id="bulkorderitems" >
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+
+            </ul>    
+
+
+          </div>  
+        
+    </div>
+
+    	
 </div>
 
 
@@ -1470,12 +1634,12 @@ error:function(e)
 function loadbranch()
 {
 	if($('#companycode').val()!='')
-	{
+	 {
 	//		alert('loadBranch 1');
 			
 		//	alert('PAth = '+ajaxpath+'loadbranch.php?companycode='+$('#companycode').val());
 			$.support.cors = true;	
-			 $.ajax({
+			$.ajax({
 			url:ajaxpath+'loadbranch.php?companycode='+$('#companycode').val(),
 			type:'POST',
 			contentType: "application/json",
@@ -1502,7 +1666,6 @@ function loadbranch()
 						$('#branchidEdit').append(branchOptions);
 
 					}else{
-						
 						navigator.notification.alert("Sorry Currently we are not serving this company , Kindly try after few days", alertCallback, "AtoZ", "Done");	
 						}
 					
@@ -1533,7 +1696,6 @@ $(document).ready(function () {
 
 function loadmenutime()
 {
-	
 	//alert(ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid);
 	
 if($('#menu_date').val()!='')
@@ -2131,10 +2293,20 @@ orderhistroyDetail+='<div style="height:30px !important; width:70%"   ><center><
 orderhistroyDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Order booking time : '+orderbookdate+'</span></center></div>';
 orderhistroyDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Payment : '+payment_status+'</span></center></div></center><div>';
 orderhistroyDetail+='<center><div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  ><div style="position:relative; top:30% !important"><center> Bill Amount : Rs '+amount+' /-</center></div></div><br />';
-orderhistroyDetail+='<div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  ><div style="position:relative; top:30% !important"><center>Track Order</center></div></div>';
+orderhistroyDetail+='<div style="width:70%; background-color:#8a150e; height:40px; color:#FFF" onclick="changepagetrack(\''+element.order_no+'\')"  ><div style="position:relative; top:30% !important"><center>Track Order</center></div></div>';
 orderhistroyDetail+='</center></div><br />';
 
 $.each(OrderObj, function(index, element) {
+	
+	var TotalQuantity =	element.product_qty;	
+	
+	if(element.discount_percentage!=0)
+	{
+		var	productTotaleach = (TotalQuantity) * (element.discount_price);
+	}else{
+		var	productTotaleach = (TotalQuantity) * (element.product_price);
+		}
+
 
 		listitems+='<li class=""><a href=""><p class="customLineheight" style="width:100% !important; ">';
 		listitems+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+' <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs.'; 
@@ -2146,7 +2318,7 @@ $.each(OrderObj, function(index, element) {
 		listitems+='<span class=" amountfont">'+element.product_price+'</span></span>';
 		}
 		listitems+='</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" >';
-		listitems+='<img src="'+imagepath+element.product_image+'" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input type="text" style="width:30px" value="'+element.order_quantity+'" disabled="disabled" /></span></span>';
+		listitems+=productTotaleach+'</span><span style="position:relative; top:10px; width:100%; right:0px;"><input type="text" style="width:30px" value="'+element.order_quantity+'" disabled="disabled" /></span></span>';
 		listitems+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
 		
 		if(element.food_type=='veg'){ listitems+='<img src="images/veg.jpg" style="max-width:30px;top:10px;" />'; }
@@ -2485,6 +2657,8 @@ function confirmOrder()
 					$('#success_deliverytime').html(OrderListObj.delivery_time);
 					$('#success_amount').html(OrderListObj.order_amount);
 					$('#success_date').html(OrderListObj.order_date);
+					$('#successtrack').attr('onclick','changepagetrack(\''+OrderListObj.order_no+'\')');
+					
 					
 					$.mobile.changePage('#successpage',{ transition:'slide' });
 					navigator.notification.activityStop();
@@ -2514,9 +2688,6 @@ function confirmOrder()
 	
 function loadorderhistroy()
 {
-alert('aasassa=='+globaluserid);
-
-
 		$.support.cors = true;	
 		$.ajax({
 		url:ajaxpath+'loadorderhistroy.php?user_id='+globaluserid,
@@ -2539,7 +2710,7 @@ alert('aasassa=='+globaluserid);
 				$.each(OrderListObj, function(index, element) {
 					 orderhistroyList+='<li onclick="changepagehistroy(\''+element.order_id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
 				});
-				alert(orderhistroyList);
+//				alert(orderhistroyList);
 				
 				$('#orderhistroylist').empty().append(orderhistroyList);
 				$('#orderhistroylist').trigger("create");
@@ -2568,6 +2739,44 @@ alert('aasassa=='+globaluserid);
 		final_cartjsonObj=[];
 		
 	}
+	
+	
+function checkbulkorder(){
+
+var bulkcode= $('#bulkcode').val();
+
+if(bulkcode!='' && bulkcode!=null )
+{
+		$.support.cors = true;	
+		$.ajax({
+		url:ajaxpath+'bulkorderlist?bulkcode='+bulkcode,
+		type:'POST',
+		contentType: "application/json",
+		async: true,
+		dataType: 'json',
+//		data:JSON.stringify(Obj),
+		crossDomain: true,
+		success: function(data)
+			{
+			   	//alert(JSON.stringify(data));
+				var OrderListObj = data.response;
+				var statusObj = data.status;
+				var orderhistroyList='';
+				if(statusObj.status=='100')
+				{
+				    		
+				}
+			},
+		error:function(data)
+		{
+			}
+		});
+	
+	}	
+	
+}	
+	
+	
 </script>
 
 
