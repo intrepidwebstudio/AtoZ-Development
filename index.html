@@ -2086,7 +2086,7 @@ function loadbranchEdit(branch_id)
 	}	
 	
 function changepagehistroy(OrderID){
-/*
+
 var orderhistroyDetail='';
 	
 	$.support.cors = true;	
@@ -2122,29 +2122,36 @@ orderhistroyDetail+='<div style="height:30px !important; width:70%"   ><center><
 orderhistroyDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Order booking time : '+orderbookdate+'</span></center></div>';
 orderhistroyDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Payment : '+payment_status+'</span></center></div></center><div>';
 orderhistroyDetail+='<center><div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  ><div style="position:relative; top:30% !important"><center> Bill Amount : Rs '+amount+' /-</center></div></div><br />';
-orderhistroyDetail+='<div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  ><div style="position:relative; top:30% !important"><center>Track Order</center></div></div><br />';
-orderhistroyDetail+='<div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  ><div style="position:relative; top:30% !important"><center>Reorder this menu</center></div></div></center></div><br />';
+orderhistroyDetail+='<div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  ><div style="position:relative; top:30% !important"><center>Track Order</center></div></div>';
+orderhistroyDetail+='</center></div><br />';
 
 $.each(OrderObj, function(index, element) {
 
-		listitems+='<li class="showAll northindian "><a href=""><p class="customLineheight" style="width:100% !important; ">';
-		listitems+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+' <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span></span>';
-		listitems+='</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" onclick=addtocart(\'element.product_id\')>';
-		listitems+='<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>';
-		listitems+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /></span></p></a></li>';
-	
-	});
+		listitems+='<li class=""><a href=""><p class="customLineheight" style="width:100% !important; ">';
+		listitems+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+' <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs.'; 
 
-				
-			}
-		 },
+		if(element.discount_percentage!=0)
+		{
+		listitems+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span> </span>';
+		}else{
+		listitems+='<span class=" amountfont">'+element.product_price+'</span></span>';
+		}
+		listitems+='</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" >';
+		listitems+='<img src="'+imagepath+element.product_image+'" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>';
+		listitems+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
+		
+		if(element.food_type=='veg'){ listitems+='<img src="images/veg.jpg" style="max-width:30px;top:10px;" />'; }
+		else{  listitems+='<img src="images/veg.jpg" style="max-width:30px;top:10px;" />'; }
+		listitems+='</span></p></a></li>';
+	});
+   }
+ },
 		error:function(data)
 		{
 			
 			} 
 	});
 		
-	*/	 
 
 	 $.mobile.changePage('#orderhistroyview',{ transition:'slide' });
 	
