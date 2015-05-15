@@ -1843,8 +1843,13 @@ function addtocart(pid)
 		$('#productdescriptionqty'+pid).val('');
 
 		$('#addcarttext'+pid).html('Add to Cart');
+
 		
-		
+		var index = cart_array.indexOf(pid);
+			if (index > -1) {
+					cart_array.splice(index, 1);
+				}
+
 	//	cart_array.pop(pid);
 		
 		}
