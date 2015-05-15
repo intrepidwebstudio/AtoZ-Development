@@ -2751,11 +2751,11 @@ alert(bulkcode);
 
 if(bulkcode!='' && bulkcode!=null )
 {
-	alert(ajaxpath+'bulkorderlist?bulkcode='+bulkcode);	
+	alert(ajaxpath+'loadbulkorderitems.php?bulkcode='+bulkcode);	
 		$.support.cors = true;	
 		$.ajax({
 		
-		url:ajaxpath+'bulkorderlist?bulkcode='+bulkcode,
+		url:ajaxpath+'loadbulkorderitems.php?bulkcode='+bulkcode,
 		type:'POST',
 		contentType: "application/json",
 		async: true,
