@@ -2295,7 +2295,7 @@ orderhistroyDetail+='<div style="height:30px !important; width:70%"   ><center><
 orderhistroyDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Order booking time : '+orderbookdate+'</span></center></div>';
 orderhistroyDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Payment : '+payment_status+'</span></center></div></center><div>';
 orderhistroyDetail+='<center><div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  ><div style="position:relative; top:30% !important"><center> Bill Amount : Rs '+amount+' /-</center></div></div><br />';
-orderhistroyDetail+='<div style="width:70%; background-color:#8a150e; height:40px; color:#FFF" onclick="changepagetrack(\''+element.order_no+'\')"  ><div style="position:relative; top:30% !important"><center>Track Order</center></div></div>';
+orderhistroyDetail+='<div style="width:70%; background-color:#8a150e; height:40px; color:#FFF" onclick="changepagetrack(\''+order_no+'\')"  ><div style="position:relative; top:30% !important"><center>Track Order</center></div></div>';
 orderhistroyDetail+='</center></div><br />';
 
 $.each(OrderObj, function(index, element) {
@@ -2531,7 +2531,7 @@ function loadliveorder()
 				if(statusObj.status=='100')
 				{
 				$.each(OrderListObj, function(index, element) {
-					 trackorderList+='<li onclick="changepagetrack(\''+element.id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
+					 trackorderList+='<li onclick="changepagetrack(\''+element.order_id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
 				});
 				
 				$('#trackorderlist').empty().append(trackorderList);
