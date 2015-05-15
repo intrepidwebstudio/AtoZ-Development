@@ -2761,10 +2761,77 @@ if(bulkcode!='' && bulkcode!=null )
 			   	//alert(JSON.stringify(data));
 				var OrderListObj = data.response;
 				var statusObj = data.status;
-				var orderhistroyList='';
+			
 				if(statusObj.status=='100')
 				{
-				    		
+				    	
+						
+				var bulkorderDetail='';
+				var OrderObj=data.response;
+				var OrderDetailsObj=data.order_details;
+				
+				var listitems='';
+				
+				var order_no=OrderDetailsObj.order_no;
+				var orderdate=OrderDetailsObj.delivery_date;
+				var amount=OrderDetailsObj.order_amount;
+				var orderbookdate=OrderDetailsObj.order_book_date;
+				var customer_name=OrderDetailsObj.customer_name;
+				var customer_phone=OrderDetailsObj.phone;
+				var customer_id=OrderDetailsObj.customer_id;
+				
+
+				
+bulkorderDetail+='<br /><center><div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Name : '+customer_name+' </span></center></div>';
+bulkorderDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Phone : '+customer_phone+' </span></center></div>';
+bulkorderDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Id :'+order_no+'</span></center>';
+bulkorderDetail+='</div><div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Delivery Date :'+orderdate+' </span></center></div>';
+bulkorderDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Order booking time : '+orderbookdate+'</span></center></div>';
+bulkorderDetail+='</center><div>';
+bulkorderDetail+='<center><div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  ><div style="position:relative; top:30% !important"><center> Bill Amount : Rs '+amount+' /-</center></div></div><br />';
+bulkorderDetail+='</center></div><br />';
+
+$.each(OrderObj, function(index, element) {
+	
+	var TotalQuantity =	element.product_qty;	
+	
+	if(element.discount_percentage!=0)
+	{
+		var	productTotaleach = (TotalQuantity) * (element.discount_price);
+	}else{
+		var	productTotaleach = (TotalQuantity) * (element.product_price);
+		}
+
+
+		listitems+='<li class=""><a href=""><p class="customLineheight" style="width:100% !important; ">';
+		listitems+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+' <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs.'; 
+
+		if(element.discount_percentage!=0)
+		{
+		listitems+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span> </span>';
+		}else{
+		listitems+='<span class=" amountfont">'+element.product_price+'</span></span>';
+		}
+		listitems+='</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" >';
+		listitems+=productTotaleach+'</span><span style="position:relative; top:10px; width:100%; right:0px;"><input type="text" style="width:30px" value="'+element.order_quantity+'" disabled="disabled" /></span></span>';
+		listitems+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
+		
+		if(element.food_type=='veg'){ listitems+='<img src="images/veg.jpg" style="max-width:30px;top:10px;" />'; }
+		else{  listitems+='<img src="images/nonveg.jpg" style="max-width:30px;top:10px;" />'; }
+		listitems+='</span></p></a></li>';
+	});
+   
+				$('#bulkorderdetail').html('');
+				$('#bulkorderdetail').html(orderhistroyDetail);
+				
+				$('#bulkorderitems').empty().append(listitems);
+				$('#bulkorderitems').trigger("create");
+				$('#bulkorderitems').listview().listview('refresh');
+				
+				$.mobile.changePage('#bulkorderconfirm',{ transition:'slide' });
+
+   
+							
 				}
 			},
 		error:function(data)
