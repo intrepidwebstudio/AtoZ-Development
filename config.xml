@@ -77,6 +77,10 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+
+	 <feature name="SplashScreen">
+      <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+	  </feature>
 	
 	<gap:plugin name="com.oauthio.plugins.oauthio" version="0.2.4" />	
 	
