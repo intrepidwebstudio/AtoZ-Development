@@ -1214,7 +1214,7 @@ Last Edited on 2015-04-21
       <div data-role="content"  class="ui-content menu_content">
  <div class="example-wrapper" data-iscroll >                           
  
- <span id="bulkorderdetail">
+ <span id="bulkorderdetails">
  
 <br />
 <center>
@@ -2832,9 +2832,10 @@ $.each(OrderObj, function(index, element) {
 	
 	
 	alert('aaaaa');
+   	$.mobile.changePage('#bulkorderconfirm',{ transition:'slide' });
    
-				$('#bulkorderdetail').html('');
-				$('#bulkorderdetail').html(orderhistroyDetail);
+				$('#bulkorderdetails').html('');
+				$('#bulkorderdetails').html(orderhistroyDetail);
 				
 				$('#bulkorderitems').empty().append(listitems);
 				$('#bulkorderitems').trigger("create");
