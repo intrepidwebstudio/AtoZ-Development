@@ -2797,6 +2797,9 @@ bulkorderDetail+='</center><div>';
 bulkorderDetail+='<center><div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  ><div style="position:relative; top:30% !important"><center> Bill Amount : Rs '+amount+' /-</center></div></div><br />';
 bulkorderDetail+='</center></div><br />';
 
+
+alert('bulkorderDetail ='+bulkorderDetail );
+
 $.each(OrderObj, function(index, element) {
 	
 	var TotalQuantity =	element.order_quantity;	
@@ -2826,6 +2829,7 @@ $.each(OrderObj, function(index, element) {
 		else{  listitems+='<img src="images/nonveg.jpg" style="max-width:30px;top:10px;" />'; }
 		listitems+='</span></p></a></li>';
 	});
+	
    
 				$('#bulkorderdetail').html('');
 				$('#bulkorderdetail').html(orderhistroyDetail);
