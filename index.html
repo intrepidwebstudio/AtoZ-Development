@@ -2787,7 +2787,7 @@ if(bulkcode!='' && bulkcode!=null )
 				var customer_id=OrderDetailsObj.customer_id;
 				
 
-				
+				alert(JSON.stringify(OrderObj));
 bulkorderDetail+='<br /><center><div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Name : '+customer_name+' </span></center></div>';
 bulkorderDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Phone : '+customer_phone+' </span></center></div>';
 bulkorderDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Id :'+order_no+'</span></center>';
@@ -2830,6 +2830,8 @@ $.each(OrderObj, function(index, element) {
 		listitems+='</span></p></a></li>';
 	});
 	
+	
+	alert('aaaaa');
    
 				$('#bulkorderdetail').html('');
 				$('#bulkorderdetail').html(orderhistroyDetail);
