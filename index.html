@@ -34,6 +34,7 @@
 	{
 		if (document.readyState === 'complete')
 		{
+			navigator.splashscreen.show();
 			document.addEventListener("deviceready", onDeviceReady, false);			
 			}
 	};
@@ -2811,6 +2812,7 @@ $.each(OrderObj, function(index, element) {
 		var	productTotaleach = (TotalQuantity) * (element.product_price);
 		}
 
+alert(productTotaleach);
 
 		listitems+='<li class=""><a href=""><p class="customLineheight" style="width:100% !important; ">';
 		listitems+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+' <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs.'; 
@@ -2832,7 +2834,11 @@ $.each(OrderObj, function(index, element) {
 	
 	
 	alert('aaaaa');
-   	$.mobile.changePage('#bulkorderconfirm',{ transition:'slide' });
+	
+	alert(listitems);
+   
+   
+   			$.mobile.changePage('#bulkorderconfirm',{ transition:'slide' });
    
 				$('#bulkorderdetails').html('');
 				$('#bulkorderdetails').html(orderhistroyDetail);
