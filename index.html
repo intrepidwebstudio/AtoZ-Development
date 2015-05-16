@@ -2777,7 +2777,7 @@ if(bulkcode!='' && bulkcode!=null )
 				var OrderObj=data.response;
 				var OrderDetailsObj=data.order_details;
 				
-				var listitems='';
+				var bulklistitems='';
 				
 				var order_no=OrderDetailsObj.order_no;
 				var orderdate=OrderDetailsObj.delivery_date;
@@ -2814,34 +2814,34 @@ $.each(OrderObj, function(index, element) {
 
 alert(productTotaleach);
 
-		listitems+='<li class=""><a href=""><p class="customLineheight" style="width:100% !important; ">';
-		listitems+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+' <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs.'; 
+		bulklistitems+='<li class=""><a href=""><p class="customLineheight" style="width:100% !important; ">';
+		bulklistitems+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+' <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs.'; 
 
 		if(element.discount_percentage!=0)
 		{
-		listitems+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span> </span>';
+		bulklistitems+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span> </span>';
 		}else{
-		listitems+='<span class=" amountfont">'+element.product_price+'</span></span>';
+		bulklistitems+='<span class=" amountfont">'+element.product_price+'</span></span>';
 		}
-		listitems+='</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" >';
-		listitems+=productTotaleach+'</span><span style="position:relative; top:10px; width:100%; right:0px;"><input type="text" style="width:30px" value="'+element.order_quantity+'" disabled="disabled" /></span></span>';
-		listitems+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
+		bulklistitems+='</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" >';
+		bulklistitems+=productTotaleach+'</span><span style="position:relative; top:10px; width:100%; right:0px;"><input type="text" style="width:30px" value="'+element.order_quantity+'" disabled="disabled" /></span></span>';
+		bulklistitems+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
 		
-		if(element.food_type=='veg'){ listitems+='<img src="images/veg.jpg" style="max-width:30px;top:10px;" />'; }
-		else{  listitems+='<img src="images/nonveg.jpg" style="max-width:30px;top:10px;" />'; }
-		listitems+='</span></p></a></li>';
+		if(element.food_type=='veg'){ bulklistitems+='<img src="images/veg.jpg" style="max-width:30px;top:10px;" />'; }
+		else{  bulklistitems+='<img src="images/nonveg.jpg" style="max-width:30px;top:10px;" />'; }
+		bulklistitems+='</span></p></a></li>';
 	});
 	
 	
 	alert('aaaaa');
 	
-	alert(listitems);
+	alert(bulklistitems);
    
    
    				$('#bulkorderdetails').html('');
 				$('#bulkorderdetails').html(orderhistroyDetail);
 				
-				$('#bulkorderitems').empty().append(listitems);
+				$('#bulkorderitems').empty().append(bulklistitems);
 				$('#bulkorderitems').trigger("create");
 				$('#bulkorderitems').listview().listview('refresh');
 				
