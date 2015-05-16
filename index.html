@@ -2839,11 +2839,11 @@ alert(productTotaleach);
    
    
    				$('#bulkorderdetails').html('');
-				$('#bulkorderdetails').html(orderhistroyDetail);
+				$('#bulkorderdetails').html(bulkorderDetail);
 				
-	//			$('#bulkorderitems').empty().append(bulklistitems);
-		//		$('#bulkorderitems').trigger("create");
-			//	$('#bulkorderitems').listview().listview('refresh');
+				$('#bulkorderitems').empty().append(bulklistitems);
+				$('#bulkorderitems').trigger("create");
+				$('#bulkorderitems').listview().listview('refresh');
 				
 				$.mobile.changePage('#bulkorderconfirm',{ transition:'slide' });
 
