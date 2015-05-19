@@ -2765,13 +2765,13 @@ if(bulkcode!='' && bulkcode!=null )
 		crossDomain: true,
 		success: function(data)
 			{
-				alert(JSON.stringify(data));
+		//		alert(JSON.stringify(data));
 				var OrderListObj = data.response;
 				var statusObj = data.status;
 			
 				if(statusObj.status=='100')
 				{
-				    	alert('ok');
+		//		    	alert('ok');
 						
 				var bulkorderDetail='';
 				var OrderObj=data.response;
@@ -2788,7 +2788,7 @@ if(bulkcode!='' && bulkcode!=null )
 				var customer_id=OrderDetailsObj.customer_id;
 				
 
-				alert(JSON.stringify(OrderObj));
+	//			alert(JSON.stringify(OrderObj));
 bulkorderDetail+='<br /><center><div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Name : '+customer_name+' </span></center></div>';
 bulkorderDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Phone : '+customer_phone+' </span></center></div>';
 bulkorderDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Id :'+order_no+'</span></center>';
@@ -2799,7 +2799,7 @@ bulkorderDetail+='<center><div style="width:70%; background-color:#8a150e; heigh
 bulkorderDetail+='</center></div><br />';
 
 
-alert('bulkorderDetail ='+bulkorderDetail );
+//alert('bulkorderDetail ='+bulkorderDetail );
 
 $.each(OrderObj, function(index, element) {
 	
@@ -2812,7 +2812,7 @@ $.each(OrderObj, function(index, element) {
 		var	productTotaleach = (TotalQuantity) * (element.product_price);
 		}
 
-alert(productTotaleach);
+//alert(productTotaleach);
 
 		bulklistitems+='<li class=""><a href=""><p class="customLineheight" style="width:100% !important; ">';
 		bulklistitems+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+' <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs.'; 
@@ -2833,11 +2833,11 @@ alert(productTotaleach);
 	});
 	
 	
-	alert('aaaaa');
+//	alert('aaaaa');
 	
 	alert(bulklistitems);
-   alert(bulkorderDetail);
-   alert('oklll');
+//   alert(bulkorderDetail);
+ //  alert('oklll');
    
    				$('#bulkorderdetails').html('');
 				$('#bulkorderdetails').html(bulkorderDetail);
