@@ -2842,11 +2842,11 @@ $.each(OrderObj, function(index, element) {
    				$('#bulkorderdetails').html('');
 				$('#bulkorderdetails').html(bulkorderDetail);
 				
-				$('#bulkorderitems').html('');
-				$('#bulkorderitems').html(bulklistitems);
-//				$('#bulkorderitems').empty().append(bulklistitems);
-//				$('#bulkorderitems').trigger("create");
-//				$('#bulkorderitems').listview().listview('refresh');
+			//	$('#bulkorderitems').html('');
+			//	$('#bulkorderitems').html(bulklistitems);
+				$('#bulkorderitems').empty().append(bulklistitems);
+				$('#bulkorderitems').trigger('create');
+				$('#bulkorderitems').listview().listview('refresh');
 				
 				$.mobile.changePage('#bulkorderconfirm',{ transition:'slide' });
 
