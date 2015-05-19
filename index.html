@@ -1300,7 +1300,13 @@ Last Edited on 2015-04-21
           </div>  
         
     </div>
-
+<div data-role="footer">
+             <div id="header" style="display:block;" class="addclassbulk"  >
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important"><span id="totalbillbulk"></span>&emsp;Checkout</h2></center>
+                    </div>
+             </div>
+    </div>
     	
 </div>
 
@@ -2445,7 +2451,7 @@ function vieworderdetails()
 	
 	}
 	
-	
+
 function checkoutpayement()
 {
 //	alert(JSON.stringify(final_cartjsonObj));
@@ -2490,16 +2496,10 @@ function checkoutpayement()
 					});
 					navigator.notification.alert(no_stock_list, alertCallback, "AtoZ", "OK");
 			}else{
-				
-					loadurl(TotalCartAmount,order_id,token);	
+				var order_type='normal';
+					loadurl(TotalCartAmount,order_id,token,order_type);	
 				
 				}
-			
-			
-			
-			
-			
-			
 				},
 			error:function(data)
 			{
@@ -2510,6 +2510,8 @@ function checkoutpayement()
 	
 	
 	}	
+	
+	
 function loadliveorder()	
 {
 //	alert('aasassa=='+globaluserid);
@@ -2573,13 +2575,17 @@ function loadliveorder()
 		}
         function iabClose(event) {
 			
-			// alert(event.type );
-			 
- 			 if(event.type=='exit')
+			 if(event.type=='exit')
 			 {
-			//	 alert('vvv');
-				confirmOrder();
 				 
+				 if(globalorder_type!='bulk')
+				 {
+					confirmOrder();
+				 }else{
+					confirmbulkOrder(); 
+					 }
+				
+				
 				 }
 
 			 
@@ -2599,11 +2605,13 @@ function loadliveorder()
 		   //alert(event.type + ' - ' + event.message);
         }
 		
-        function loadurl(amount,ord_id,token){
-			var orderType='normal';
+        function loadurl(amount,ord_id,token,order_type){
+			var orderType=order_type;
 			globalorderno=ord_id;
 			
-		//	alert('urrl  = '+' '+'http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token);
+			alert('urrl  = '+'http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token);
+			
+			
 			iabRef = window.open('http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token, '_blank','toolbarposition=top,location=yes,closebuttoncaption=Close');//presentationstyle: Set to pagesheet, formsheet or fullscreen 
 			
 			$.support.cors = true;
@@ -2787,7 +2795,9 @@ if(bulkcode!='' && bulkcode!=null )
 				var customer_phone=OrderDetailsObj.phone;
 				var customer_id=OrderDetailsObj.customer_id;
 				
-
+	globalbulkcode=bulkcode;
+	
+	
 	//			alert(JSON.stringify(OrderObj));
 bulkorderDetail+='<br /><center><div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Name : '+customer_name+' </span></center></div>';
 bulkorderDetail+='<div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Phone : '+customer_phone+' </span></center></div>';
@@ -2832,27 +2842,24 @@ $.each(OrderObj, function(index, element) {
 		bulklistitems+='</span></p></a></li>';
 	});
 	
-	
-//	alert('aaaaa');
-	
-	alert(bulklistitems);
-//   alert(bulkorderDetail);
- //  alert('oklll');
-   
    				$('#bulkorderdetails').html('');
 				$('#bulkorderdetails').html(bulkorderDetail);
-				
-			//	$('#bulkorderitems').html('');
-			//	$('#bulkorderitems').html(bulklistitems);
+
 				$('#bulkorderitems').empty().append(bulklistitems);
 				$('#bulkorderitems').trigger('create');
 				$('#bulkorderitems').listview().listview('refresh');
 				
+//				loadurl(TotalCartAmount,order_id,globalbulkcode,order_type);	
+
+				var amount=OrderDetailsObj.order_amount;
+				var customer_id=OrderDetailsObj.customer_id;
+				
+				$('#totalbillbulk').html(amount);
+				$('.addclassbulk').attr('onclick','loadurl(\''+amount+'\',\''+order_no+'\',\''+globalbulkcode+'\',\'bulk+\')');//  onclick="">
+				
 				$.mobile.changePage('#bulkorderconfirm',{ transition:'slide' });
 
-   
-							
-				}
+   				}
 			},
 		error:function(data)
 		{
@@ -2866,7 +2873,11 @@ $.each(OrderObj, function(index, element) {
 	
 }	
 	
+function confirmbulkOrder(){
 	
+	alert('success bulk order');
+		
+	}	
 </script>
 
 
