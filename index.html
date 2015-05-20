@@ -2375,7 +2375,7 @@ var orderhistroyDetail='';
 	crossDomain: true,
 	success: function(data)
 		 {
-			
+			alert(JSON.stringify(data));
 			
 			if(data.status.status=='100')
 			{
@@ -2749,7 +2749,7 @@ function confirmOrder()
 		crossDomain: true,
 		success: function(data)
 			{
-			  //	alert(JSON.stringify(data));
+			  	alert(JSON.stringify(data));
 				
 				var OrderListObj = data.response;
 				var statusObj = data.status;
