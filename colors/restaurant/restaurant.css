@@ -10,8 +10,8 @@ a.button_11, a.button_12{color:#FFFFFF;}
 
 /* Google web font
 /*------------------------------------------*/
-h1, h2, h3, h4, h5, h6, .logo, .image_caption, a.button_12, a.button_11, .trigger a, .trigger_blog a, .post_left, .post_right_unreveal, #loadMore, #showLess, a.backtoblog, .form label, .form_submit, a.call_button, a.map_button{font-family: 'Berkshire Swash', cursive;}
-h2.page_title{color:#904b00;}
+h1, h2, h3, h4, h5, h6, .logo, .image_caption, a.button_12, a.button_11, .trigger a, .trigger_blog a, .post_left, .post_right_unreveal, #loadMore, #showLess, a.backtoblog, .form label, .form_submit, a.call_button, a.map_button{font-family:"Times New Roman", Times, serif;}
+h2.page_title{color:#904b00; }
 
 
 
@@ -115,7 +115,7 @@ a.map_button{ background:url(../../images/icons/map_pin.png) no-repeat left #29a
 
 .fontCustom , .fontCustom p  , .fontCustom *{
 
-font-family: 'Berkshire Swash', cursive;	
+font-family:"Times New Roman", Times, serif;	
 	
 	}
 	
