@@ -66,6 +66,8 @@ padding-right:5px !important;
 		}
 	
 	.menu_content{
+		background-image:url(images/atozicons/background.jpg);
+		background-size:contain;
 		
 		padding:0em !important;
 		}	
@@ -1140,6 +1142,7 @@ Last Edited on 2015-04-21
 
 
 <div data-role="page" id="bulkorder" class="fontCustom"  data-title="Atoz Restaurent"  >
+
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
@@ -1147,7 +1150,7 @@ Last Edited on 2015-04-21
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
-                		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
+                		<a href="#bulkorderhistroy"  >	<img src="images/icons_contour/docs.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
@@ -1156,7 +1159,7 @@ Last Edited on 2015-04-21
              </div>
         </div>
         <!-- /header -->
-	    <div role="main" class="ui-content menu_content">
+	    <div role="main" class="ui-content menu_content" >
         <div class="example-wrapper" data-iscroll style="padding:10px !important;" >            
         
         
@@ -1193,6 +1196,17 @@ Last Edited on 2015-04-21
            		 
     	</div>
     </div><!-- /content -->
+    
+     <!--- <div data-role="panel" data-display="push" data-position="right" id="bulksettings" style="background-image:url(images/atozicons/background.jpg); background-size:contain;">
+		    
+                	 <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Bulk order Menu</h2></center>
+            		 </div>
+					<ul>
+                    	<li><h4>Order Histroy</h4></li>
+                    </ul>
+</div> ---><!-- /panel -->
+    
 </div>
 
 <div data-role="page" id="bulkorderconfirm" class="fontCustom"  data-title="Atoz Restaurent"  >
@@ -1404,7 +1418,38 @@ Last Edited on 2015-04-21
     </div><!-- /content -->
 </div>
 
+<div data-role="page" id="bulkorderhistroy" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order Histroy</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"  class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+            <ul data-role="listview" class="orderFont" id="bulkorderhistroylist">
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            </ul>    
+			
+          </div>  
+        
+    </div>
 
+    	
+</div>
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="js/idangerous.swiper.scrollbar-2.1.js"></script>
@@ -1491,6 +1536,7 @@ return false;
 
 function loadlocaldatabase(){
 		db.transaction(populateDB, errorCB, successCB);	
+		db.transaction(populateBulkDB, errorCB, successBulkCB);	
 	}
 </script> 
 <script>
@@ -1538,10 +1584,40 @@ jQuery(document).ready(function(){
 function populateDB(tx) {
 	tx.executeSql('CREATE TABLE IF NOT EXISTS atozuser (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL , user_id INTEGER , phone INTEGER )');
 }
+
+function populateBulkDB(tx) {
+	tx.executeSql('CREATE TABLE IF NOT EXISTS atozbulkuser (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL , user_id INTEGER , phone INTEGER )');
+}
+
+
 function errorCB(err) {
 }
 function successCB() {
 	db.transaction(queryDB,errorCB);
+}
+
+function successBulkCB() {
+	db.transaction(queryBulkDB,errorCB);
+}
+
+function queryBulkDB(tx){
+	tx.executeSql('SELECT * FROM atozbulkuser ',[],queryBulkSuccess,errorCB);
+}
+function queryBulkSuccess(tx,result){
+	alert('7');
+	
+			var length = result.rows.length;
+			
+			alert("length = "+length);
+			if(length >0)
+			{
+				for(var i=0; i< length ; i++)
+				{
+					globalbulkuserid=result.rows.iterm(i).user_id;
+				}
+			}else{
+				globalbulkuserid='';
+				}
 }
 
 
@@ -2792,8 +2868,54 @@ function confirmOrder()
 	  }); 	
  }	
 	
-function loadorderhistroy()
+function loadbulkorderhistroy()
 {
+	alert('globalbulkuserid = '+globalbulkuserid);
+	
+		$.support.cors = true;	
+		$.ajax({
+		url:ajaxpath+'loadbulkorderhistroy.php?user_id='+globalbulkuserid,
+		type:'POST',
+		contentType: "application/json",
+		async: true,
+		dataType: 'json',
+//		data:JSON.stringify(Obj),
+		crossDomain: true,
+		success: function(data)
+			{
+			   	alert("BUL ORDER HISTORYY"+JSON.stringify(data));
+				var OrderListObj = data.response;
+				var statusObj = data.status;
+				var orderhistroyList='';
+				
+				if(statusObj.status=='100')
+				{
+				$.each(OrderListObj, function(index, element) {
+					 orderhistroyList+='<li onclick="changepagehistroy(\''+element.order_id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
+				});
+//				alert(orderhistroyList);
+				
+				$('#bulkorderhistroylist').empty().append(orderhistroyList);
+				$('#bulkorderhistroylist').trigger("create");
+				$('#bulkorderhistroylist').listview().listview('refresh');
+				$.mobile.changePage('#bulkorderhistroy',{  transition:'slide' });
+				
+				}else{
+//				alert('no order made yet');
+				$.mobile.changePage('#bulkorderhistroy',{  transition:'slide' });
+					}
+			},
+		error:function(){
+			}	
+		});
+	
+	
+	
+	}
+	
+function loadorderhistroy(){
+	
+	
 		$.support.cors = true;	
 		$.ajax({
 		url:ajaxpath+'loadorderhistroy.php?user_id='+globaluserid,
@@ -2834,9 +2956,8 @@ function loadorderhistroy()
 	
 	
 	
-	}
 	
-		
+	}		
 	
 	
 	function resetcart()
@@ -3001,9 +3122,19 @@ function confirmbulkOrder(){
 					$('#successbulk_amount').html(OrderListObj.order_amount);
 					$('#successbulk_date').html(OrderListObj.order_date);
 					
+					var name=OrderListObj.bulkcustomer_name;
+					var phone=OrderListObj.bulkcustomer_phone;
+					var bulkcustomerid=OrderListObj.bulkcustomer_id;
+					
 					$.mobile.changePage('#successpagebulk',{ transition:'slide' });
 					navigator.notification.activityStop();
 				//  you order has been placed success fully , you can now track your food in track order menu
+				
+				
+				//bulk
+				db.transaction( function(tx){ insertbulkvalues(tx, name, bulkcustomerid, phone)}, ErrorCallBack );	
+
+				
 				  	
 				   }else{
 					
@@ -3027,6 +3158,23 @@ function confirmbulkOrder(){
  
 		
 	}	
+//
+function insertbulkvalues(tx,parameter1,parameter2,parameter3)
+{
+alert(globalbulkuserid);
+
+globalbulkuserid=parameter2;
+
+		alert(parameter1+'==userid=='+parameter2+'===='+parameter3);
+	tx.executeSql('INSERT INTO atozbulkuser(username, user_id , phone ) VALUES (?,?,?)',[parameter1,parameter2,parameter3],userbulkinsert);
+	
+	}
+function userbulkinsert()
+{
+	alert('success insert');
+	}	
+	
+
 </script>
 
 
