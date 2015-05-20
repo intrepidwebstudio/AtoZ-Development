@@ -1310,6 +1310,99 @@ Last Edited on 2015-04-21
     	
 </div>
 
+<div data-role="page" id="successpagebulk" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#" onclick="resetcart()"  >												    						<img src="images/icons/back.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order Confirmation</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+	    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll >            
+        
+		        <center><h3 >Payment Successful</h3></center>
+            
+           		 <p class="privacyLight"><center class="privacyLight">
+            		Your Order has been placed successfully. <br /> <br />
+                    
+            		ORDER NO.  : <span class="privacyLight" id="successbulk_orderid">OD100000038</span>
+                    <br /><br />
+                    ORDER DELIVERY DATE-TIME : <span class="privacyLight" id="successbulk_orderdatetime">25-20-2015</span>
+                    <br /><br />
+                    ORDER AMOUNT : Rs<span class="privacyLight" id="successbulk_amount" >2000</span>/-
+                    <br /><br />
+                    ORDER DATE-TIME: <span class="privacyLight" id="successbulk_date" >24-04-2015 22:45 hrs</span> 
+
+                    <br />
+                    <br />
+                     We will keep you updated through notification untill your food is ready for devlivery  and reach you.
+                    <br /> <br /> 
+                    
+                     Thank You for the opputunity to serve you . Keep ordering. 
+                     </center></p>
+             
+                    <center>
+                    <div style="width:40%; background-color:#8a150e; height:40px; color:#FFF; font-size:16px"  >
+                    <div style="position:relative; top:30% !important"><center> Track &nbsp;Order</center></div>
+                    </div>
+              		</center>
+
+                         
+    	</div>
+    </div><!-- /content -->
+</div>
+
+<div data-role="page" id="failurepagebulk" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order Confirmation</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+	    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll >            
+        
+		        <center><h3 >Payment Failed !!!</h3></center>
+            
+           		 <p class="privacyLight"><center class="privacyLight">
+            		!!!&nbsp; Sorry your Order has not been placed try again &nbsp;!!!. <br /> <br />
+                    
+            		ORDER NO.  : <span class="privacyLight" id="failurebulk_orderid">OD100000038</span>
+                    <br /><br />
+                    ORDER DELIVERY DATE-TIME : <span class="privacyLight" id="failurebulk_orderdate">25-20-2015</span>
+                    <br /><br />
+                    ORDER AMOUNT : Rs<span class="privacyLight" id="failurebulk_amount" >2000</span>/-
+                    <br /><br />
+                    ORDER DATE-TIME: <span class="privacyLight" id="failurebulk_date" >24-04-2015 22:45 hrs</span> 
+            <br />
+            <br />
+            Please Check the order history page for more details. And for further info contact  info@atuzfood.com
+            <br /> <br /> 
+             Thank You for the opputunity to serve you . Keep ordering. 
+             </center></p>
+    	</div>
+    </div><!-- /content -->
+</div>
 
 
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
@@ -1645,7 +1738,6 @@ function loadbranch()
 	if($('#companycode').val()!='')
 	 {
 	//		alert('loadBranch 1');
-			
 		//	alert('PAth = '+ajaxpath+'loadbranch.php?companycode='+$('#companycode').val());
 			$.support.cors = true;	
 			$.ajax({
@@ -1661,8 +1753,11 @@ function loadbranch()
 					var branchdetails=data.response;
 					var branchOptions='';
 					
+					
 					if(branchdetails.status=='100')
 					{
+						//var branchAddress=data.address;
+						
 						var branchData=branchdetails.branchdata;
 						branchOptions+='<option value="">Select branch</option>';
 						$.each(branchData, function(index, element) {
@@ -1675,6 +1770,7 @@ function loadbranch()
 						$('#branchidEdit').append(branchOptions);
 
 					}else{
+						$('#branchid').html('');
 						navigator.notification.alert("Sorry Currently we are not serving this company , Kindly try after few days", alertCallback, "AtoZ", "Done");	
 						}
 					
@@ -2585,10 +2681,8 @@ function loadliveorder()
 					confirmbulkOrder(); 
 					 }
 				
-				
-				 }
+				}
 
-			 
           iabRef.removeEventListener('loadstart', iabLoadStart);
           iabRef.removeEventListener('loadstop', iabLoadStop);
           iabRef.removeEventListener('exit', iabClose);
@@ -2608,6 +2702,7 @@ function loadliveorder()
         function loadurl(amount,ord_id,token,order_type){
 			var orderType=order_type;
 			globalorderno=ord_id;
+			globalorder_type=order_type;
 			
 			alert('urrl  = '+'http://www.atuzfood.com/payment/pay.php?order_id='+ord_id+'&type='+orderType+'&token='+token);
 			
@@ -2878,6 +2973,58 @@ $.each(OrderObj, function(index, element) {
 function confirmbulkOrder(){
 	
 	alert('success bulk order');
+	
+//	alert('verifying backend for payment suceess for order number '+ globalorderno );
+	navigator.notification.activityStart("Please Wait", "Its loading....");
+  $.support.cors = true;	
+  $.ajax({
+		url:ajaxpath+'checkpaymentstatusbulk.php?order_id='+globalorderno,
+		type:'POST',
+		contentType: "application/json",
+		async: true,
+		dataType: 'json',
+//		data:JSON.stringify(Obj),
+		crossDomain: true,
+		success: function(data)
+			{
+			 alert(JSON.stringify(data));
+				
+				var OrderListObj = data.response;
+				var statusObj = data.status;
+				var trackorderStatus='';
+				if(statusObj.status=='100')
+				{
+					//alert('s');
+					
+					$('#successbulk_orderid').html(OrderListObj.order_no);
+					$('#successbulk_orderdate').html(OrderListObj.delivery_menu_date);
+					$('#successbulk_amount').html(OrderListObj.order_amount);
+					$('#successbulk_date').html(OrderListObj.order_date);
+					
+					$.mobile.changePage('#successpagebulk',{ transition:'slide' });
+					navigator.notification.activityStop();
+				//  you order has been placed success fully , you can now track your food in track order menu
+				  	
+				   }else{
+					
+				//	alert('s');   
+   					$('#failurebulk_orderid').html(OrderListObj.order_no);
+					$('#failurebulk_orderdate').html(OrderListObj.delivery_menu_date);
+					$('#failurebulk_amount').html(OrderListObj.order_amount);
+					$('#failurebulk_date').html(OrderListObj.order_date);
+
+					   $.mobile.changePage('#failurepagebulk',{ transition:'slide' });
+					   //failure page;
+					   navigator.notification.activityStop();
+					   }
+			},
+		error:function(data){
+			//	alert('Error');
+			}	
+			
+	  
+	  }); 	
+ 
 		
 	}	
 </script>
