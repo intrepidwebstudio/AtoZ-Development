@@ -2797,6 +2797,8 @@ if(bulkcode!='' && bulkcode!=null )
 				
 	globalbulkcode=bulkcode;
 	
+	alert(globalbulcode);
+	
 	
 	//			alert(JSON.stringify(OrderObj));
 bulkorderDetail+='<br /><center><div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder">Name : '+customer_name+' </span></center></div>';
@@ -2851,8 +2853,8 @@ $.each(OrderObj, function(index, element) {
 				
 //				loadurl(TotalCartAmount,order_id,globalbulkcode,order_type);	
 
-				var amount=OrderDetailsObj.order_amount;
-				var customer_id=OrderDetailsObj.customer_id;
+//				var amount=OrderDetailsObj.order_amount;
+	//			var customer_id=OrderDetailsObj.customer_id;
 				
 				$('#totalbillbulk').html(amount);
 				$('.addclassbulk').attr('onclick','loadurl(\''+amount+'\',\''+order_no+'\',\''+globalbulkcode+'\',\'bulk+\')');//  onclick="">
