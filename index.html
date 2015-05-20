@@ -1150,7 +1150,7 @@ Last Edited on 2015-04-21
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
-                		<a href="#bulkorderhistroy"  >	<img src="images/icons_contour/docs.png" alt="" title="" />
+                		<a href="#" onclick="loadbulkorderhistroy()"  >	<img src="images/icons_contour/docs.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
@@ -1437,6 +1437,7 @@ Last Edited on 2015-04-21
         <!-- /header -->
       <div data-role="content"  class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
+        
             <ul data-role="listview" class="orderFont" id="bulkorderhistroylist">
             	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
                 </li>	
@@ -1594,30 +1595,6 @@ function errorCB(err) {
 }
 function successCB() {
 	db.transaction(queryDB,errorCB);
-}
-
-function successBulkCB() {
-	db.transaction(queryBulkDB,errorCB);
-}
-
-function queryBulkDB(tx){
-	tx.executeSql('SELECT * FROM atozbulkuser ',[],queryBulkSuccess,errorCB);
-}
-function queryBulkSuccess(tx,result){
-	alert('7');
-	
-			var length = result.rows.length;
-			
-			alert("length = "+length);
-			if(length >0)
-			{
-				for(var i=0; i< length ; i++)
-				{
-					globalbulkuserid=result.rows.iterm(i).user_id;
-				}
-			}else{
-				globalbulkuserid='';
-				}
 }
 
 
@@ -3161,9 +3138,9 @@ function confirmbulkOrder(){
 //
 function insertbulkvalues(tx,parameter1,parameter2,parameter3)
 {
-alert(globalbulkuserid);
 
 globalbulkuserid=parameter2;
+alert(globalbulkuserid);
 
 		alert(parameter1+'==userid=='+parameter2+'===='+parameter3);
 	tx.executeSql('INSERT INTO atozbulkuser(username, user_id , phone ) VALUES (?,?,?)',[parameter1,parameter2,parameter3],userbulkinsert);
@@ -3171,9 +3148,33 @@ globalbulkuserid=parameter2;
 	}
 function userbulkinsert()
 {
-	alert('success insert');
+	alert('success insert 1');
 	}	
 	
+function successBulkCB() {
+	db.transaction(queryBulkDB,errorCB);
+}
+
+function queryBulkDB(tx){
+	tx.executeSql('SELECT * FROM atozbulkuser order by id desc limit 1 ',[],queryBulkSuccess,errorCB);
+}
+function queryBulkSuccess(tx,result){
+	alert('7');
+	
+			var length = result.rows.length;
+			
+			alert("length = "+length);
+			if(length >0)
+			{
+				for(var i=0; i< length ; i++)
+				{
+					globalbulkuserid=result.rows.iterm(i).user_id;
+				}
+			}else{
+				globalbulkuserid='';
+				}
+}
+
 
 </script>
 
