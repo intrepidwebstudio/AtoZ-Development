@@ -20,3 +20,4 @@ var MenuDate='';
 var MenuDateId='';
 var TotalCartAmount='';
 var globalorder_type='';
+var globalbulkcode='';
