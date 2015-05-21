@@ -66,8 +66,9 @@ padding-right:5px !important;
 		}
 	
 	.menu_content{
-		background-image:url(images/atozicons/background.jpg);
+	/*	background-image:url(images/atozicons/background.jpg);
 		background-size:contain;
+		*/
 		
 		padding:0em !important;
 		}	
@@ -3276,18 +3277,18 @@ function queryBulkSuccess(tx,result){
 	
 			var length = result.rows.length;
 			
-			alert("length = "+length);
+			alert("length 11= "+length);
 			if(length >0)
 			{
 				for(var i=0; i< length ; i++)
 				{
 					
-					globalbulkuserid=result.rows.iterm(i).user_id;
+					globalbulkuserid=result.rows.item(i).user_id;
 					
-					alert("aaaaaa = "+globalbulkuserid);
+//					alert("aaaaaa = "+globalbulkuserid);
 				}
 			}else{
-				alert('worng else');
+	//			alert('worng else');
 				globalbulkuserid='';
 				}
 				
