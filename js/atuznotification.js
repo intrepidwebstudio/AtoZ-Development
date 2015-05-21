@@ -2,7 +2,17 @@
             var pushNotification;
             
             function onDeviceReady() {
+				$.mobile.transitionFallbacks.slideout = "none";
+				// Set to page height
+$to.height( screenHeight + toScroll );
 				
+scrollPage();
+
+$to.addClass( $.mobile.activePageClass );
+
+// Send focus to page as it is now display: block
+$.mobile.focusPage( $to );
+
 
 				
                 $("#app-status-ul").append('<li>deviceready event received</li>');
