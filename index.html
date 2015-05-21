@@ -66,9 +66,9 @@ padding-right:5px !important;
 		}
 	
 	.menu_content{
-	/*	background-image:url(images/atozicons/background.jpg);
+		background-image:url(images/atozicons/background.jpg);
 		background-size:contain;
-		*/
+
 		
 		padding:0em !important;
 		}	
@@ -288,10 +288,10 @@ font-family:Arial, Helvetica, sans-serif !important;
         <div data-role="header" data-id="persistent"  data-position="fixed" style=" background-image:url(images/atozicons/wooden%20sign%20board%204.jpg); background-size:100% 100%; " >
              <div id="header" style="display:block">
  
-                	<div class="gohome radius20">
+                	<div class="gohome">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu">
                 		<a href="#" data-rel="back">
                         	<img src="images/icons/back.png" alt="" title="" />
                         </a>
@@ -2831,10 +2831,10 @@ function loadliveorder()
 			    navigator.notification.activityStop();
 	  	//	  	alert(event.type + ' - ' + event.url);
 			
-				if (event.url.match("payment/confirm")) {
-     		   			iabRef.close();
+			//	if (event.url.match("payment/confirm")) {
+     		 //  			iabRef.close();
 						
-    			}
+    		//	}
 		}
         function iabClose(event) {
 			
