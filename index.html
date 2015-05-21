@@ -3287,15 +3287,18 @@ function queryBulkSuccess(tx,result){
 					alert("aaaaaa = "+globalbulkuserid);
 				}
 			}else{
+				alert('worng else');
 				globalbulkuserid='';
 				}
+				
+			alert("globalbulkuserid = "+globalbulkuserid);	
 				
 				
 }
 
 function changepagehistroybulk(OrderID)
 {
-	
+	alert(ajaxpath+'bulkorderhistroysummary.php?user_id='+globalbulkuserid+'&order_id='+OrderID);
 
 var orderhistroyDetail='';
 	
