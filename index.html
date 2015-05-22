@@ -204,7 +204,25 @@ padding-right:5px !important;
 font-family:Arial, Helvetica, sans-serif !important;
 }
 
-
+.headerbackground{
+/*	 background-image:url(images/atozicons/wooden%20sign%20board%204.jpg) !important; background-size:100% 100% !important; */
+/* background-image:url(images/atozicons/background.jpg) !important; background-size:contain;*/
+	}
+.titleheaderouter{
+	clear:none !important; padding:14px; background-image:url(images/atozicons/golden-sign-board.png); background-size:100% 100%; background-repeat:no-repeat;
+	}	
+.titleheaderinner{
+	 color:#000;padding-left:20px;padding-right:20px; font-size:20px;  vertical-align:middle; 	
+		}
+		
+.page_title{
+	padding:10px;
+	}		
+		
+.menunew{
+	
+	}		
+		
 						</style>
 </head>
 <body>
@@ -218,36 +236,48 @@ font-family:Arial, Helvetica, sans-serif !important;
             </ul>
         </div>
 -->    
-        <div class="logo" ><a href="#"  style="color:#BF6000"><!--<img src="res/icon/android/512.png" style="width:40% !important; max-width:225px;" />-->AtuZ<span> Have your meal in few clicks </span></a></div>
+        <div class="logo" >
+            <a href="#"  style="color:#BF6000">
+                    <img src="images/atozicons/logo.png" style="width:60% !important; max-width:270px;" />
+                    
+                    <!--AtuZ<span> Have your meal in few clicks </span>-->
+            </a>
+        </div>
+        
+
         <div class="menu">
         <ul class="fontCustom">
-                <li><a href="#" onclick="checkuserstatus()"><img src="colors/restaurant/images/Place order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Place Order</span></a></li>
-                <li><a href="#" onclick="loadliveorder()" ><img src="colors/restaurant/images/Track order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Track Order</span></a></li>
-                <li><a href="#" onclick="loadorderhistroy()" ><img src="colors/restaurant/images/orderhistory.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Order History</span></a></li>
-                <li><a href="#settings" data-transition="slide" ><img src="colors/restaurant/images/setting.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Settings</span></a></li>
-                <li><a href="#bulkorder" ><img src="colors/restaurant/images/orderhistory.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Bulk Order</span></a></li>
-                <li><a href="#" data-transition="slide" ><img src="colors/restaurant/images/setting.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Notifications</span></a></li>
+                <li><a href="#" onclick="checkuserstatus()"><img src="images/atozicons/place-order.png" alt="" title="" /></a></li>
+                <li><a href="#" onclick="loadliveorder()" ><img src="images/atozicons/track-order.png" alt="" title="" /></a></li>
+                <li><a href="#" onclick="loadorderhistroy()" ><img src="images/atozicons/order-history.png" alt="" title="" /></a></li>
+                <li><a href="#settings" data-transition="slide" ><img src="images/atozicons/app-setting.png" alt="" title="" /></a></li>
+                <li><a href="#bulkorder" ><img src="images/atozicons/bulk-order.png" alt="" title="" /></a></li>
+                <li><a href="#" data-transition="slide" ><img src="images/atozicons/notifications.png" alt="" title="" /></a></li>
         </ul>
         
         <div class="clearfix"></div>
-        </div>
+        </div> 
     </div>
 </div>    
 
 <div data-role="page" id="registration"  data-title="Atoz Restaurent" >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground" >
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#" data-rel="back">
                         	<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
-                    <div class="page_title"  >
-                    	<center><h2 style="clear:none !important"> Registration</h2></center>
+                    <div class="page_title" >
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Registration</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -284,11 +314,9 @@ font-family:Arial, Helvetica, sans-serif !important;
     
 </div>
 
-
-
-<div data-role="page" id="placeorder"  data-title="Atoz Restaurent" >
+<div data-role="page" id="placeorder"  data-title="Atoz Restaurent" style="background-image:url(images/atozicons/background.jpg); background-size:contain;" >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed" style=" background-image:url(images/atozicons/wooden%20sign%20board%204.jpg); background-size:100% 100%; " >
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground" style="border-bottom:2px #FFF solid; " >
              <div id="header" style="display:block">
  
                 	<div class="gohome">
@@ -299,8 +327,12 @@ font-family:Arial, Helvetica, sans-serif !important;
                         	<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
-                    <div class="page_title" style="padding:10px;"  >
-                        <center><span style="clear:none !important; padding:14px; background-image:url(images/atozicons/golden-sign-board.png); background-size:100% 100%; background-repeat:no-repeat;"><span style=" color:#000;padding-left:20px;padding-right:20px; font-size:20px;  vertical-align:middle; ">Place Order</span></span></center>
+                    <div class="page_title" >
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Place Order</span>
+                            </span>
+                        </center>
                     </div>
                     
              </div>
@@ -308,7 +340,7 @@ font-family:Arial, Helvetica, sans-serif !important;
         <!-- /header -->
 
     <!--content--->
-    <div data-role="content" style="background-image:url(images/atozicons/background.jpg); background-size:contain;">
+    <div data-role="content" >
         <div class="example-wrapper" data-iscroll>            
                     <div class="form">
                         <form class="fontCustom" id="CommentForm" method="post" action="#">
@@ -340,17 +372,22 @@ font-family:Arial, Helvetica, sans-serif !important;
 
 <div data-role="page" id="menulist" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground"  >
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
-                		<a  href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                	<div class="gomenu ">
+                		<a  href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >											    						<img src="images/icons/menu.png" alt="" title="" />
                         </a>
                 	</div>
-                    <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Menu</h2></center>
+                    
+                    <div class="page_title" >
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Menu</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -395,20 +432,24 @@ font-family:Arial, Helvetica, sans-serif !important;
     </div><!-- /panel -->
 </div>
 
-
 <div data-role="page" id="viewcart" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground"  >
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
-                    <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Cart</h2></center>
+                    
+                    <div class="page_title" >
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Cart</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -452,17 +493,21 @@ font-family:Arial, Helvetica, sans-serif !important;
 <div data-role="page" id="viewproduct" class="fontCustom"  data-title="Atoz Restaurent"  >
 
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
-                    <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Menu</h2></center>
+                    <div class="page_title" >
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Product Detail</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -485,21 +530,24 @@ font-family:Arial, Helvetica, sans-serif !important;
     
     
 </div>
-        
   
 <div data-role="page" id="settings" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
-                    <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Settings</h2></center>
+                    <div class="page_title" >
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Settings</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -519,20 +567,23 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div>
 
-
 <div data-role="page" id="myaccount" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-		     <div data-role="header" data-id="persistent"  data-position="fixed">
+		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Settings</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">My Account</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -571,17 +622,22 @@ font-family:Arial, Helvetica, sans-serif !important;
 
 <div data-role="page" id="orderhistroy" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-		     <div data-role="header" data-id="persistent"  data-position="fixed">
+		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order Histroy</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Order Histroy</span>
+                            </span>
+                        </center>
+
                     </div>
              </div>
         </div>
@@ -612,20 +668,24 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div>
 
-
 <div data-role="page" id="trackorder"  class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-		     <div data-role="header" data-id="persistent"  data-position="fixed">
+		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Track Order</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Track Order</span>
+                            </span>
+                        </center>
+
                     </div>
              </div>
         </div>
@@ -656,20 +716,24 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div> 
 
-
 <div data-role="page" id="trackorderstatus" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-		     <div data-role="header" data-id="persistent"  data-position="fixed">
+		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order status</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Order Status</span>
+                            </span>
+                        </center>
+
                     </div>
              </div>
         </div>
@@ -753,17 +817,21 @@ font-family:Arial, Helvetica, sans-serif !important;
 
 <div data-role="page" id="orderhistroyview" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-		     <div data-role="header" data-id="persistent"  data-position="fixed">
+		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order Summary</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Order Summary</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -860,20 +928,24 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div>
 
-
 <div data-role="page" id="privacy" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Privacy Policy</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Privacy Pocily</span>
+                            </span>
+                        </center>
+
                     </div>
              </div>
         </div>
@@ -952,17 +1024,21 @@ Last Edited on 2015-04-21
 
 <div data-role="page" id="terms" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">T &nbsp;&&nbsp; C</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">T &nbsp;&&nbsp; C</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -1039,24 +1115,23 @@ Last Edited on 2015-04-21
     </div><!-- /content -->
 </div>
 
-
-
-
-
-
 <div data-role="page" id="successpage" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#" onclick="resetcart()"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order Confirmation</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Confirmation</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -1105,17 +1180,21 @@ Last Edited on 2015-04-21
 
 <div data-role="page" id="failurepage" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order Confirmation</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Confirmation</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -1147,21 +1226,24 @@ Last Edited on 2015-04-21
     </div><!-- /content -->
 </div>
 
-
 <div data-role="page" id="bulkorder" class="fontCustom"  data-title="Atoz Restaurent"  >
 
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#" onclick="loadbulkorderhistroy()"  >	<img src="images/icons_contour/docs.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Bulk Order</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Bulk Order</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -1218,17 +1300,21 @@ Last Edited on 2015-04-21
 
 <div data-role="page" id="bulkorderconfirm" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-		     <div data-role="header" data-id="persistent"  data-position="fixed">
+		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order Summary</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Order Summary</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -1333,17 +1419,21 @@ Last Edited on 2015-04-21
 
 <div data-role="page" id="successpagebulk" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#" onclick="resetcart()"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order Confirmation</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Confirmation</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -1385,17 +1475,21 @@ Last Edited on 2015-04-21
 
 <div data-role="page" id="failurepagebulk" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order Confirmation</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Confirmation</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -1427,17 +1521,21 @@ Last Edited on 2015-04-21
 
 <div data-role="page" id="bulkorderhistroy" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-		     <div data-role="header" data-id="persistent"  data-position="fixed">
+		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order Histroy</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Order Histroy</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
@@ -1459,20 +1557,23 @@ Last Edited on 2015-04-21
     	
 </div>
 
-
 <div data-role="page" id="bulkorderhistroyview" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-		     <div data-role="header" data-id="persistent"  data-position="fixed">
+		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
-                	<div class="gohome radius20">
+                	<div class="gohome ">
                 		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                	<div class="gomenu radius20">
+                	<div class="gomenu ">
                 		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Order Summary</h2></center>
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Order Summary</span>
+                            </span>
+                        </center>
                     </div>
              </div>
         </div>
