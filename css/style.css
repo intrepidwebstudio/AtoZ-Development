@@ -39,7 +39,7 @@ h2.post_title{ font-size:26px;padding:0 0 20px 0; line-height:28px;}
 /*----------header and footer buttons---------------*/
 .gohome{ width:40px; height:40px; float:left; margin:0 0 0 10px;}
 .gohome a{ color:#FFFFFF; text-decoration:none; font-weight:bold; font-size:12px; display:block; text-align:center;}
-.gohome a img{display:inline-block;max-height:25px; margin:5px 0 0 0;}
+.gohome a img{display:inline-block;max-height:35px; margin:2px 0 0 0;}
 
 .gohomemenu{ width:40px; height:40px; float:left; margin:0 0 0 10px;}
 .gohomemenu a{ color:#FFFFFF; text-decoration:none; font-weight:bold; font-size:12px; display:block; text-align:center;}
@@ -47,7 +47,7 @@ h2.post_title{ font-size:26px;padding:0 0 20px 0; line-height:28px;}
 
 .gomenu{ width:40px; height:40px;float:right;margin:0 10px 0 0;}
 .gomenu a{ color:#FFFFFF; text-decoration:none; font-weight:bold; font-size:12px; display:block; text-align:center;}
-.gomenu a img{display:inline-block;max-height:25px; margin:6px 0 0 0;}
+.gomenu a img{display:inline-block;max-height:35px; margin:2px 0 0 0;}
 
 .scrolltop{ width:40px; height:40px;margin:auto; display:block;}
 .scrolltop a{ color:#FFFFFF; text-decoration:none; font-weight:bold; font-size:12px; display:block; text-align:center;}
