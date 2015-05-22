@@ -1900,6 +1900,7 @@ function checkuserstatus()
 	
 function validate_user()
 {
+	
 var username = $('#username').val();
 var userphone = $('#userphone').val();
 var branch_id = $('#branchid').val();
@@ -1917,6 +1918,7 @@ dataType: 'json',
 crossDomain: true,
 success: function(data)
 	{
+		alert(JSON.stringify(data));
 			if(data.LoginResponse.status=='100')
 			{
 				var	login_Response = data.LoginResponse;
@@ -1931,7 +1933,7 @@ success: function(data)
 error: function(e)
 {
 
-navigator.notification.alert("System error 83014. Please try again in a couple of minutes.", alertCallback, "AtoZ", "Done");
+navigator.notification.alert("System error . Please try again in a couple of minutes.", alertCallback, "AtoZ", "Done");
 }
 });
 
@@ -1948,11 +1950,11 @@ navigator.notification.alert("Please enter details correctly.", alertCallback, "
 	
 function insertvalues(tx,parameter1,parameter2,parameter3)
 {
-//	alert('121');
+	alert('121');
 	globalusername = parameter1;
 	globaluserid= parameter2;
 	globaluserphone= parameter3;
-	//alert(parameter1+'==userid=='+parameter2+'===='+parameter3);
+	alert(parameter1+'==userid=='+parameter2+'===='+parameter3);
 	tx.executeSql('INSERT INTO atozuser(username, user_id , phone ) VALUES (?,?,?)',[parameter1,parameter2,parameter3],userinsert);
 	
 	}
