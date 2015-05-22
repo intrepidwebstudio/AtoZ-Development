@@ -13,7 +13,7 @@ $to.addClass( $.mobile.activePageClass );
 // Send focus to page as it is now display: block
 $.mobile.focusPage( $to );
 
-db.transaction(populateBulkDB, errorCB, successBulkCB);	
+
 
 				
                 $("#app-status-ul").append('<li>deviceready event received</li>');
@@ -62,7 +62,7 @@ db.transaction(populateBulkDB, errorCB, successBulkCB);
 				
 				
 				
-								//	$.mobile.page.prototype.options.domCache = true;
+									$.mobile.page.prototype.options.domCache = false;
 					loadlocaldatabase();
 					browser_setting();
 					if (window.spinnerplugin) {
@@ -80,7 +80,7 @@ db.transaction(populateBulkDB, errorCB, successBulkCB);
 						}
 
 				
-				
+			db.transaction(populateBulkDB, errorCB, successBulkCB);		
             }
             
             // handle APNS notifications for iOS
