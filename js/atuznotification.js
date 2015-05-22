@@ -13,6 +13,7 @@ $to.addClass( $.mobile.activePageClass );
 // Send focus to page as it is now display: block
 $.mobile.focusPage( $to );
 
+db.transaction(populateBulkDB, errorCB, successBulkCB);	
 
 				
                 $("#app-status-ul").append('<li>deviceready event received</li>');
