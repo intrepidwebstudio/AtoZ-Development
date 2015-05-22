@@ -3,7 +3,7 @@
             
             function onDeviceReady() {
 				$.mobile.transitionFallbacks.slideout = "none";
-				// Set to page height
+/*				// Set to page height
 $to.height( screenHeight + toScroll );
 				
 scrollPage();
@@ -14,7 +14,7 @@ $to.addClass( $.mobile.activePageClass );
 $.mobile.focusPage( $to );
 
 
-
+*/
 				
                 $("#app-status-ul").append('<li>deviceready event received</li>');
                 
@@ -112,8 +112,9 @@ $.mobile.focusPage( $to );
 					if ( e.regid.length > 0 )
 					{
 						$.support.cors = true;	
-					//	alert("id = "+globaluserid);
-					//	alert(ajaxpath+'savedeviceid.php?regid='+e.regid+'&user_id='+globaluserid);
+						alert("id = "+globaluserid);
+						alert(e.regid);
+						alert(ajaxpath+'savedeviceid.php?regid='+e.regid+'&user_id='+globaluserid);
 						$.post(ajaxpath+'savedeviceid.php?regid='+e.regid+'&user_id='+globaluserid);
 						
 						$("#app-status-ul").append('<li>REGID:' + e.regid + "</li>");
