@@ -3398,19 +3398,17 @@ function successBulkCB() {
 function queryBulkDB(tx){
 	tx.executeSql('SELECT * FROM atozbulkuser order by id desc limit 1 ',[],queryBulkSuccess,errorCB);
 }
-function queryBulkSuccess(tx,result){
+function queryBulkSuccess(tx,result1){
 
 	
-			var length = result.rows.length;
+			var length = result1.rows.length;
 			
 			alert("length 11= "+length);
 			if(length >0)
 			{
 				for(var i=0; i< length ; i++)
 				{
-					
-					globalbulkuserid=result.rows.item(i).user_id;
-					
+					globalbulkuserid=result1.rows.item(i).user_id;
 //					alert("aaaaaa = "+globalbulkuserid);
 				}
 			}else{
