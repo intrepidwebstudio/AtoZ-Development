@@ -69,10 +69,6 @@ padding-right:5px !important;
 		}
 	
 	.menu_content{
-		background-image:url(images/atozicons/background.jpg);
-		background-size:contain;
-
-		
 		padding:0em !important;
 		}	
 		
@@ -205,6 +201,9 @@ font-family:Arial, Helvetica, sans-serif !important;
 }
 
 .headerbackground{
+	border-bottom:2px #7D3F00 solid; 
+
+	
 /*	 background-image:url(images/atozicons/wooden%20sign%20board%204.jpg) !important; background-size:100% 100% !important; */
 /* background-image:url(images/atozicons/background.jpg) !important; background-size:contain;*/
 	}
@@ -219,15 +218,17 @@ font-family:Arial, Helvetica, sans-serif !important;
 	padding:10px;
 	}		
 		
-.menunew{
+.pagebackground{
+	background: url(images/atozicons/background.jpg) no-repeat center center;background-attachment:fixed; -webkit-background-size: 100%; -moz-background-size: 100%;-o-background-size: 100%;background-size: 100%;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;
 	
-	}		
+
+	}	
 		
 						</style>
 </head>
 <body>
 
-<div data-role="page" id="home"  data-title="Atoz Restaurent" class="sliderbg_menu" >
+<div data-role="page"  id="home"  data-title="Atoz Restaurent" class="sliderbg_menu" >
     <!--content--->
     <div data-role="content">
 <!--    	<div  >
@@ -260,7 +261,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     </div>
 </div>    
 
-<div data-role="page" id="registration"  data-title="Atoz Restaurent" >
+<div data-role="page"  id="registration" class="fontCustom pagebackground" data-title="Atoz Restaurent" >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground" >
              <div id="header" style="display:block">
@@ -314,9 +315,9 @@ font-family:Arial, Helvetica, sans-serif !important;
     
 </div>
 
-<div data-role="page" id="placeorder"  data-title="Atoz Restaurent" style="background-image:url(images/atozicons/background.jpg); background-size:contain;" >
+<div data-role="page"  id="placeorder" class="fontCustom pagebackground" data-title="Atoz Restaurent">
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground" style="border-bottom:2px #FFF solid; " >
+        <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground" >
              <div id="header" style="display:block">
  
                 	<div class="gohome">
@@ -370,7 +371,7 @@ font-family:Arial, Helvetica, sans-serif !important;
        </div>
 </div>    
 
-<div data-role="page" id="menulist" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="menulist" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground"  >
              <div id="header" style="display:block">
@@ -432,7 +433,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     </div><!-- /panel -->
 </div>
 
-<div data-role="page" id="viewcart" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="viewcart" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground"  >
              <div id="header" style="display:block">
@@ -490,7 +491,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     </div>
 </div>
 
-<div data-role="page" id="viewproduct" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="viewproduct" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
 
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
@@ -531,7 +532,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     
 </div>
   
-<div data-role="page" id="settings" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="settings" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -567,7 +568,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div>
 
-<div data-role="page" id="myaccount" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="myaccount" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -620,7 +621,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div>
 
-<div data-role="page" id="orderhistroy" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="orderhistroy" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -668,7 +669,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div>
 
-<div data-role="page" id="trackorder"  class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="trackorder"  class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -716,7 +717,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div> 
 
-<div data-role="page" id="trackorderstatus" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="trackorderstatus" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -815,7 +816,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div> 
 
-<div data-role="page" id="orderhistroyview" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="orderhistroyview" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -928,7 +929,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     	
 </div>
 
-<div data-role="page" id="privacy" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="privacy" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -1022,7 +1023,7 @@ Last Edited on 2015-04-21
     </div><!-- /content -->
 </div>
 
-<div data-role="page" id="terms" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="terms" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -1115,7 +1116,7 @@ Last Edited on 2015-04-21
     </div><!-- /content -->
 </div>
 
-<div data-role="page" id="successpage" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="successpage" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -1178,7 +1179,7 @@ Last Edited on 2015-04-21
     </div><!-- /content -->
 </div>
 
-<div data-role="page" id="failurepage" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="failurepage" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -1226,7 +1227,7 @@ Last Edited on 2015-04-21
     </div><!-- /content -->
 </div>
 
-<div data-role="page" id="bulkorder" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="bulkorder" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
 
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
@@ -1298,7 +1299,7 @@ Last Edited on 2015-04-21
     
 </div>
 
-<div data-role="page" id="bulkorderconfirm" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="bulkorderconfirm" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -1417,7 +1418,7 @@ Last Edited on 2015-04-21
     	
 </div>
 
-<div data-role="page" id="successpagebulk" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="successpagebulk" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -1473,7 +1474,7 @@ Last Edited on 2015-04-21
     </div><!-- /content -->
 </div>
 
-<div data-role="page" id="failurepagebulk" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="failurepagebulk" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -1519,7 +1520,7 @@ Last Edited on 2015-04-21
     </div><!-- /content -->
 </div>
 
-<div data-role="page" id="bulkorderhistroy" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="bulkorderhistroy" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">
@@ -1557,7 +1558,7 @@ Last Edited on 2015-04-21
     	
 </div>
 
-<div data-role="page" id="bulkorderhistroyview" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  id="bulkorderhistroyview" class="fontCustom pagebackground"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
              <div id="header" style="display:block">

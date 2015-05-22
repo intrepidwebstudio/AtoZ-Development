@@ -55,7 +55,7 @@ h2.post_title{ font-size:26px;padding:0 0 20px 0; line-height:28px;}
 /*----------page buttons---------------*/
 a.button_12{ width:48%; margin:0 1% 10px 1%;padding:10px 0; float:left; display:block;font-size:18px; text-decoration:none; text-align:center;}
 a.button_11{ width:98%; margin:0 0 10px 1%;padding:10px 0; float:left; display:block;font-size:18px; text-decoration:none; text-align:center;}
-.green{ background-color:#85af5d;}
+.green{ background-color:#7D3F00 ;}
 .blue{ background-color:#29aae3;}
 .darkblue{ background-color:#035792;}
 .red{ background-color:#c53238;}
@@ -67,7 +67,7 @@ a.button_11{ width:98%; margin:0 0 10px 1%;padding:10px 0; float:left; display:b
 .yellow{ background-color:#ffb606;}
 .bluegreen{ background-color:#06a78b;}
 
-.green_borderbottom{border-bottom:3px #759a51 solid;}
+.green_borderbottom{border-bottom:3px #7D3F30 solid;}
 .blue_borderbottom{border-bottom:3px #198bbd solid;}
 .red_borderbottom{border-bottom:3px #8e262c solid;}
 .purple_borderbottom{border-bottom:3px #671a4b solid;}
