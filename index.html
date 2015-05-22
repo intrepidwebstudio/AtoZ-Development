@@ -231,12 +231,11 @@ font-family:Arial, Helvetica, sans-serif !important;
 <div data-role="page"  id="home"  data-title="Atoz Restaurent" class="sliderbg_menu" >
     <!--content--->
     <div data-role="content">
-<!--    	<div  >
+    	<div  >
         	<ul  id="app-status-ul">
             	<li></li>
             </ul>
         </div>
--->    
         <div class="logo" >
             <a href="#"  style="color:#BF6000">
                     <img src="images/atozicons/logo.png" style="width:60% !important; max-width:270px;" />
@@ -1822,8 +1821,10 @@ function queryDB(tx){
 	tx.executeSql('SELECT * FROM atozuser ',[],querySuccess,errorCB);
 }
 function querySuccess(tx,result){
-	//alert('7');
+	alert('7');
+	
 			var length = result.rows.length;
+			alert(length);
 			if(length >0)
 			{
 				for(var i=0; i< length ; i++)
@@ -1837,16 +1838,19 @@ function querySuccess(tx,result){
 				globaluserphone= phone;
 				
 				}
-				//$.mobile.changePage('#placeorder',{ transition:'slide'  });   // Select date and time	
+				$.mobile.changePage('#placeorder',{ transition:'slide'  });   // Select date and time	
 				
 			}//if close
 			else{
 				globaluserid='';
 			}
+			alert(globaluserid);
+			
 }
 
 function checkuserstatus()
 {
+	alert("globaluserid = "+globaluserid);
 	if(globaluserid!='' && globaluserid!=0 && globaluserid!=null )
 		{
 			$.support.cors = true;	
@@ -1878,7 +1882,8 @@ function checkuserstatus()
 				},
 			 error: function(data){
 				 
-				 	$.mobile.changePage('#placeorder',{ transition:'slide'  });
+				 alert('errrr');
+				// 	$.mobile.changePage('#placeorder',{ transition:'slide'  });
 				 
 				 }	
 			});
@@ -1887,6 +1892,7 @@ function checkuserstatus()
 			
 			
 		}else{
+			alert('elseee');
 			$.mobile.changePage('#registration',{ transition:'slide'  });
 			}
 	}
@@ -1952,6 +1958,7 @@ function insertvalues(tx,parameter1,parameter2,parameter3)
 	}
 function userinsert()
 {
+	alert('userinsert');
 	loadlocaldatabase();
 	checkuserstatus();
 	onDeviceReady();
