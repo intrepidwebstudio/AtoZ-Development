@@ -45,7 +45,7 @@ $.mobile.focusPage( $to );
 		      $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
                 	if (device.platform == 'android' || device.platform == 'Android' ||
                             device.platform == 'amazon-fireos' ) {
-			pushNotification.register(successHandler, errorHandler, {"senderID":"152320123032","ecb":"onNotification"});		// required!
+			pushNotification.register(successHandler, errorHandler, {"senderID":"956976040955","ecb":"onNotification"});		// required!
 					} else {
                     	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
                 	}
