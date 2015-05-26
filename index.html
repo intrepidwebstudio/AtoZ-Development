@@ -219,7 +219,9 @@ font-family:Arial, Helvetica, sans-serif !important;
 .footerbackground{
 	clear:none !important; font-size:18px; padding:10px; padding-right:15px; color:#641300 ; font-weight:600;  background-image:url(images/atozicons/wooden%20sign%20board.png); background-size:100% 100%; background-repeat:no-repeat;
 	}	
-		
+	
+	 
+	
 						</style>
 </head>
 <body>
@@ -1661,6 +1663,47 @@ Last Edited on 2015-04-21
             </ul>    
 
 
+          </div>  
+        
+    </div>
+
+    	
+</div>
+
+
+<div data-role="page"  id="notification" class="fontCustom pagebackground"  data-title="Atoz Restaurent" >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed"  class="headerbackground">
+             <div id="header" style="display:block">
+                	<div class="gohome ">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu ">
+                		<a href="#"  data-rel="back"  >												    						<img src="images/icons/back.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center>
+                        	<span class="titleheaderouter">
+                            	<span class="titleheaderinner">Notification</span>
+                            </span>
+                        </center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"  class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+        
+            <ul data-role="listview" class="orderFont" id="notificationlist">
+            	<li onclick="changepage()">
+                    <div >
+                      <span>Dear customer your food is now being prepared , and will reach u shortly , thank you and keep ordering</span>
+                      <span style="float:right;">26-05-2015 09:15 pm</span>
+                    </div>
+                </li>	
+            </ul>    
+			
           </div>  
         
     </div>
@@ -3525,6 +3568,7 @@ function syncnotifications()
 			}
 			
 			alert("total count = " + i );
+			
 			loadlocalnotificationdb();
 		 }
 		  
@@ -3542,7 +3586,7 @@ function insertnotifications(tx,parameter1,parameter2,parameter3){
 	
 function notificationinsert()
 {
-	alert('success');
+  	
 	}	
 	
 function loadlocalnotificationdb()
@@ -3561,18 +3605,30 @@ function queryNotificationSuccess(tx,result){
 	
 			var length = result.rows.length;
 			alert(length);
+			var notifications='';
 			
 			if(length >0)
 			{
 				for(var i=0; i< length ; i++)
 				{
-				var	dbid = result.rows.item(i).dbid;
-				var	message= result.rows.item(i).message;				
-				var	datetime= result.rows.item(i).datetime;
-				
-				alert("Result from table = " +dbid+" - "+message+" - "+datetime);				
-		
+					var	dbid = result.rows.item(i).dbid;
+					var	message= result.rows.item(i).message;				
+					var	datetime= result.rows.item(i).datetime;
+					alert("Result from table = " +dbid+" - "+message+" - "+datetime);				
+					notifications+='<li><div><span>'+message+'</span><span style="float:right;">'+datetime+'</span></div></li>';
 				}
+			
+		$(document).on('pagebeforeshow', '#notification', function(){   
+
+					$('#notificationlist').empty().append(notifications);
+					$('#notificationlist').trigger("create");
+					$('#notificationlist').listview().listview('refresh');
+					
+			});
+			
+					$.mobile.changePage('#notification',{ transition:'slide' });
+			
+				
 			}//if close
 			else{
 				alert('length = 0 ');
