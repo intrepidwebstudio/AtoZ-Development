@@ -90,7 +90,7 @@ li.table_row{background-color:#e6e6e6;}
 .tweet li{border:1px #ffffff solid;}
 
 .form label.error{color:#990000;}
-.form_input, .form_textarea{border:1px #FFFEC7 solid;}
+.form_input, .form_textarea{ /* border:1px #FFFEC7 solid; */}
 .form_submit{color:#fff;}
 
 ul.social li{ -webkit-border-radius: 200px;-moz-border-radius: 200px;border-radius: 200px;}
