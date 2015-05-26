@@ -3509,6 +3509,7 @@ function syncnotifications()
 	crossDomain: true,
 	success: function(data)
 		 {
+			 var i=0;
 			if(data.status.status=='100')
 			{
 				alert('2');
@@ -3516,10 +3517,15 @@ function syncnotifications()
 			  
 			  $.each(response, function(index, element) {
 				  
-					alert(element.id+" "+element.datetime+" "+element.message+" "+element.unreadcount);
+				//	alert(element.id+" "+element.datetime+" "+element.message+" "+element.unreadcount);
+				i++;
+				
 						db.transaction( function(tx){ insertnotifications(tx, element.id, element.message, element.datetime)}, ErrorCallBack );
 				  });
 			}
+			
+			alert("total count = " + i );
+			loadlocalnotificationdb();
 		 }
 		  
 		  
