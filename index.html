@@ -215,6 +215,10 @@ font-family:Arial, Helvetica, sans-serif !important;
 	
 
 	}	
+	
+.footerbackground{
+	clear:none !important; font-size:18px; padding:10px; padding-right:15px; color:#641300 ; font-weight:600;  background-image:url(images/atozicons/wooden%20sign%20board.png); background-size:100% 100%; background-repeat:no-repeat;
+	}	
 		
 						</style>
 </head>
@@ -246,7 +250,7 @@ font-family:Arial, Helvetica, sans-serif !important;
                 <li><a href="#" onclick="loadorderhistroy()" ><img src="images/atozicons/order-history.png" alt="" title="" /></a></li>
                 <li><a href="#settings" data-transition="slide" ><img src="images/atozicons/app-setting.png" alt="" title="" /></a></li>
                 <li><a href="#bulkorder" ><img src="images/atozicons/bulk-order.png" alt="" title="" /></a></li>
-                <li><a href="#" data-transition="slide" ><img src="images/atozicons/notifications.png" alt="" title="" /></a></li>
+                <li><a href="#" onclick="loadnotifications()" ><img src="images/atozicons/notifications.png" alt="" title="" /></a></li>
         </ul>
         
         <div class="clearfix"></div>
@@ -407,7 +411,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     <div data-role="footer">
              <div id="header" style="display:block;" onclick="gotocart()">
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important"> View Cart</h2></center>
+                        <center><span class="footerbackground"> View Cart</span></center>
                     </div>
              </div>
     </div>
@@ -478,7 +482,7 @@ font-family:Arial, Helvetica, sans-serif !important;
     	<div data-role="footer">
              <div id="header" style="display:block;" onclick="checkoutpayement()">
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important"><span id="totalbill"></span>&emsp;Checkout</h2></center>
+                        <center><span class="footerbackground"><span id="totalbill"></span>&emsp;Checkout</span></center>
                     </div>
              </div>
     </div>
@@ -1797,6 +1801,7 @@ jQuery(document).ready(function(){
 
 function populateDB(tx) {
 	tx.executeSql('CREATE TABLE IF NOT EXISTS atozuser (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL , user_id INTEGER , phone INTEGER )');
+	tx.executeSql('CREATE TABLE IF NOT EXISTS notification (id INTEGER PRIMARY KEY AUTOINCREMENT, dbid INTEGER ,message TEXT NOT NULL , datetime DATETIME )');
 }
 
 function populateBulkDB(tx) {
@@ -1812,7 +1817,7 @@ function successCB() {
 
 
 function queryDB(tx){
-	tx.executeSql('SELECT * FROM atozuser ',[],querySuccess,errorCB);
+   	tx.executeSql('SELECT * FROM atozuser ',[],querySuccess,errorCB);
 }
 function querySuccess(tx,result){
 
@@ -3479,10 +3484,97 @@ $.each(OrderObj, function(index, element) {
 	});
 		
 
-	
-	
+}
+
+
+
+function loadnotifications()
+{
+	syncnotifications();
 	
 	}
+	
+	
+function syncnotifications()
+{
+	alert('1');
+	
+	$.support.cors = true;	
+	$.ajax({
+	url:ajaxpath+'loadnotifications.php?user_id='+globaluserid ,
+	type:'POST',
+	contentType: "application/json",
+	async: true,
+	dataType: 'json',
+	crossDomain: true,
+	success: function(data)
+		 {
+			if(data.status.status=='100')
+			{
+				alert('2');
+			  var response=data.response;
+			  
+			  $.each(response, function(index, element) {
+				  
+					alert(element.id+" "+element.datetime+" "+element.message+" "+element.unreadcount);
+						db.transaction( function(tx){ insertnotifications(tx, element.id, element.message, element.datetime)}, ErrorCallBack );
+				  });
+			}
+		 }
+		  
+		  
+		  });	
+	}	
+	
+function insertnotifications(tx,parameter1,parameter2,parameter3){
+	
+	tx.executeSql('INSERT INTO notification(dbid, message , datetime ) VALUES (?,?,?)',[parameter1,parameter2,parameter3],notificationinsert,ErrorCallBack);
+	
+	} 	
+	
+	
+	
+function notificationinsert()
+{
+	alert('success');
+	}	
+	
+function loadlocalnotificationdb()
+{
+db.transaction(populateDB, errorCB, successNotificationCB);	  	
+	}	
+	
+function successNotificationCB() {
+	db.transaction(queryNotificationDB,errorCB);
+}
+
+function queryNotificationDB(tx){
+   	tx.executeSql('SELECT * FROM notification ',[],queryNotificationSuccess,errorCB);
+}
+function queryNotificationSuccess(tx,result){
+	
+			var length = result.rows.length;
+			alert(length);
+			
+			if(length >0)
+			{
+				for(var i=0; i< length ; i++)
+				{
+				var	dbid = result.rows.item(i).dbid;
+				var	message= result.rows.item(i).message;				
+				var	datetime= result.rows.item(i).datetime;
+				
+				alert("Result from table = " +dbid+" - "+message+" - "+datetime);				
+		
+				}
+			}//if close
+			else{
+				alert('length = 0 ');
+//				globaluserid='';
+			}
+}
+
+
 
 
 </script>
