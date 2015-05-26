@@ -293,17 +293,17 @@ font-family:Arial, Helvetica, sans-serif !important;
                             <label>Mobile Number:</label>
                             <input type="tel" name="userphone" id="userphone" value="" class="form_input required fontCustom" />
                             <label>Company Name:</label>
-                            <select type="text" name="companycode" id="companycode" onchange="loadbranch()" class="form_input fontCustom" style="width:100%;" >
+                            <select type="text" name="companycode" id="companycode" onchange="loadbranch()" class="form_input fontCustom footerbackground" style="width:100%;" >
                             <option>Select company</option>
                             </select>
                             <label>Company Location:</label>
-                            <select type="text" name="branchid" id="branchid" class="form_input fontCustom" style="width:100%;" >
+                            <select type="text" name="branchid" id="branchid" class="form_input fontCustom footerbackground" style="width:100%;" >
                             <option>Select Location</option>
                             </select>
                             <div>&emsp;</div>
-                            <button type="button" onclick="validate_user()" name="submit" class="form_submit green green_borderbottom" >
-                            Submit
-                            </button>
+                            
+                            <center> <div class="footerbackground"  style="width:40%;"   onclick="validate_user()" >Register</div></center>
+                            
                             <center>                      
                           <label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label></center>
                     </form>
@@ -345,7 +345,7 @@ font-family:Arial, Helvetica, sans-serif !important;
                     <div class="form">
                         <form class="fontCustom" id="CommentForm" method="post" action="#">
                             
-                       <select type="text" name="menu_date" id="menu_date" onchange="loadmenutime()"  class="form_input fontCustom" style="width:100%;" >
+                       <select type="text" name="menu_date" id="menu_date" onchange="loadmenutime()"  class="form_input footerbackground fontCustom" style="width:100%;" >
                            	<option>Select Date</option>
                         </select>
                          
@@ -353,13 +353,11 @@ font-family:Arial, Helvetica, sans-serif !important;
                             <input type="date" name="menu_date" id="menu_date" onchange="loadmenutime()" value="" class="form_input required" />
                             <label>Time:</label>
 -->                            
-                            <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%;" >
+                            <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom footerbackground" style="width:100%;" >
                             	<option>Select delivery time</option>
                             </select>
                             
-                            <button type="button" onclick="loadmenulist()" name="submit" class="form_submit green green_borderbottom" >
-                            	Next
-                            </button>
+                           <center> <div class="footerbackground"  style="width:40%;"   onclick="loadmenulist()" >Next</div></center>
                             
                             <center>                      
                             	<label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label>
@@ -3559,15 +3557,10 @@ function syncnotifications()
 			  var response=data.response;
 			  
 			  $.each(response, function(index, element) {
-				  
-				//	alert(element.id+" "+element.datetime+" "+element.message+" "+element.unreadcount);
-				i++;
-				
+							i++;
 						db.transaction( function(tx){ insertnotifications(tx, element.id, element.message, element.datetime)}, ErrorCallBack );
 				  });
 			}
-			
-			alert("total count = " + i );
 			
 			loadlocalnotificationdb();
 		 }
@@ -3604,7 +3597,7 @@ function queryNotificationDB(tx){
 function queryNotificationSuccess(tx,result){
 	
 			var length = result.rows.length;
-			alert(length);
+		//	alert(length);
 			var notifications='';
 			
 			if(length >0)
@@ -3614,9 +3607,11 @@ function queryNotificationSuccess(tx,result){
 					var	dbid = result.rows.item(i).dbid;
 					var	message= result.rows.item(i).message;				
 					var	datetime= result.rows.item(i).datetime;
-					alert("Result from table = " +dbid+" - "+message+" - "+datetime);				
+				//	alert("Result from table = " +dbid+" - "+message+" - "+datetime);				
 					notifications+='<li><div><span>'+message+'</span><span style="float:right;">'+datetime+'</span></div></li>';
 				}
+			
+			alert(notifications);
 			
 		$(document).on('pagebeforeshow', '#notification', function(){   
 
